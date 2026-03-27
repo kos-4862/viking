@@ -166,6 +166,9 @@ export function SiteHeader() {
         </button>
 
         <nav id="primary-nav" className={`primary-nav${open ? " is-open" : ""}`} aria-label="Primary">
+          <div className="mobile-nav-lang-top">
+            <LanguageRow locale={locale} setLocale={setLocale} />
+          </div>
           {copy.header.navItems.map((item) => (
             <a key={item.href} href={`/${item.href}`} onClick={closeMenu}>
               {item.label}
@@ -173,7 +176,6 @@ export function SiteHeader() {
           ))}
 
           <div className="mobile-nav-panel">
-            <LanguageRow locale={locale} setLocale={setLocale} />
             <a className="mobile-nav-link" href="/#contact" onClick={closeMenu}>
               {copy.header.mobileCtaLabel}
             </a>

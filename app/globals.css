@@ -469,6 +469,10 @@ input {
 
 /* Mobile nav */
 
+.mobile-nav-lang-top {
+  display: none;
+}
+
 .mobile-nav-panel {
   display: none;
 }
@@ -2068,6 +2072,11 @@ button:focus-visible {
 
   .header-actions {
     display: none;
+  }
+
+  .mobile-nav-lang-top {
+    display: block;
+    margin-bottom: 12px;
   }
 
   .mobile-nav-panel {
