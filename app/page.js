@@ -7,6 +7,7 @@ import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { getSiteCopy } from "@/lib/site-copy";
 import { PhotoGallery } from "@/components/photo-gallery";
+import { DynamicTitle } from "@/components/dynamic-title";
 
 export default function HomePage() {
   const { locale } = useLocale();
@@ -14,6 +15,7 @@ export default function HomePage() {
 
   return (
     <>
+      <DynamicTitle />
       <SiteHeader />
       <main id="top">
 
@@ -54,7 +56,7 @@ export default function HomePage() {
         {/* 3. COACH — photo + expanded bio */}
         <section id="coach" className="section section-dark section-coach">
           <div className="coach-bg-photo" aria-hidden="true">
-            <img src="/images/arena.jpg" alt="" loading="lazy" decoding="async" />
+            <img src="/images/coach-bg.jpg" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="shell coach-profile">
             <p className="eyebrow">{copy.coach.eyebrow}</p>
