@@ -2,6 +2,7 @@ import "./globals.css";
 import { Montserrat, Bebas_Neue } from "next/font/google";
 import { LocaleProvider } from "@/components/locale-provider";
 import { ScrollManager } from "@/components/scroll-manager";
+import { CookieConsent } from "@/components/cookie-consent";
 import { getStructuredData } from "@/lib/structured-data";
 
 const montserrat = Montserrat({
@@ -66,7 +67,7 @@ export default function RootLayout({ children }) {
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0WMTCBF9MN');`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});gtag('js',new Date());`,
           }}
         />
         <script
@@ -78,6 +79,7 @@ export default function RootLayout({ children }) {
         <LocaleProvider>
           <ScrollManager />
           {children}
+          <CookieConsent />
         </LocaleProvider>
       </body>
     </html>

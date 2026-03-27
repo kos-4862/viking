@@ -2348,3 +2348,67 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   COOKIE CONSENT BANNER
+   ============================================================ */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--surface-2);
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.cookie-banner p {
+  margin: 0;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cookie-btn:hover {
+  opacity: 0.85;
+}
+
+.cookie-btn--accept {
+  background: var(--accent);
+  color: #fff;
+}
+
+.cookie-btn--decline {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+}
