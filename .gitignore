@@ -1,0 +1,12 @@
+.next
+.open-next
+.wrangler
+node_modules
+npm-debug.log*
+.DS_Store
+.venv
+.idea/
+.dev.vars
+
+# Heavy media — moved to media-archive/, serve via CDN later
+media-archive/
