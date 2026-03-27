@@ -30,7 +30,27 @@ const socialItems = [
 
 const fallbackWhatsappUrl = "https://wa.me/380999513717";
 
-function LanguageDropdown({ copy, locale, setLocale, mobile = false }) {
+function LanguageRow({ locale, setLocale }) {
+  return (
+    <div className="language-row" role="radiogroup" aria-label="Language">
+      {supportedLocales.map((item) => (
+        <button
+          key={item.code}
+          type="button"
+          role="radio"
+          aria-checked={locale === item.code}
+          className={`language-row__btn${locale === item.code ? " is-active" : ""}`}
+          onClick={() => setLocale(item.code)}
+        >
+          <span aria-hidden="true">{item.flag}</span>
+          <span>{item.shortLabel}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function LanguageDropdown({ copy, locale, setLocale }) {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
   const currentLocale = supportedLocales.find((item) => item.code === locale) || supportedLocales[0];
@@ -57,7 +77,7 @@ function LanguageDropdown({ copy, locale, setLocale, mobile = false }) {
   return (
     <div
       ref={wrapperRef}
-      className={`language-dropdown${mobile ? " language-dropdown-mobile" : ""}${open ? " is-open" : ""}`}
+      className={`language-dropdown${open ? " is-open" : ""}`}
     >
       <button
         type="button"
@@ -148,7 +168,7 @@ export function SiteHeader() {
           ))}
 
           <div className="mobile-nav-panel">
-            <LanguageDropdown copy={copy} locale={locale} setLocale={setLocale} mobile />
+            <LanguageRow locale={locale} setLocale={setLocale} />
             {phoneHref ? (
               <a className="mobile-nav-phone" href={phoneHref} onClick={closeMenu}>
                 {phoneLabel}

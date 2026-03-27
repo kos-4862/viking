@@ -432,15 +432,37 @@ input {
   display: none;
 }
 
-.language-dropdown-mobile .language-dropdown__trigger {
-  width: 100%;
-  justify-content: space-between;
+.language-row {
+  display: flex;
+  gap: 8px;
 }
 
-.language-dropdown-mobile .language-dropdown__menu {
-  position: static;
-  min-width: 0;
-  margin-top: 10px;
+.language-row__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.language-row__btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.language-row__btn.is-active {
+  background: rgba(218, 17, 35, 0.15);
+  border-color: rgba(218, 17, 35, 0.4);
+  color: #fff;
 }
 
 .mobile-nav-link {
