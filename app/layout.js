@@ -18,7 +18,7 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-display",
 });
 
-const SITE_URL = "https://sc-viking-site.kostyantyn.workers.dev";
+const SITE_URL = "https://scviking2021.com";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
