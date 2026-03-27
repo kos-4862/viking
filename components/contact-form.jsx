@@ -7,7 +7,8 @@ import { getSiteCopy } from "@/lib/site-copy";
 const initialState = {
   name: "",
   phone: "",
-  age: ""
+  age: "",
+  website: ""
 };
 
 export function ContactForm() {
@@ -73,6 +74,9 @@ export function ContactForm() {
         <span>{copy.form.fields.ageLabel}</span>
         <input name="age" inputMode="numeric" value={form.age} onChange={updateField} placeholder={copy.form.fields.agePlaceholder} required />
       </label>
+
+      {/* Honeypot — hidden from humans, bots fill it */}
+      <input name="website" value={form.website} onChange={updateField} autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }} />
 
       <button className="button button-primary" type="submit" disabled={status === "loading"}>
         {status === "loading" ? copy.form.submitLoading : copy.form.submitIdle}

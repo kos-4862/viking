@@ -2,7 +2,20 @@ import { NextResponse } from "next/server";
 import { getTelegramRuntimeConfig } from "@/lib/runtime-config";
 import { getSiteCopy } from "@/lib/site-copy";
 
+const RATE_LIMIT_WINDOW = 5 * 60 * 1000; // 5 minutes
+const RATE_LIMIT_MAX = 3;
+const submissions = new Map();
 
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = submissions.get(ip);
+  if (!entry || now - entry.first > RATE_LIMIT_WINDOW) {
+    submissions.set(ip, { first: now, count: 1 });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
 
 const NOTIFY_EMAIL = "scvikingur@gmail.com";
 
@@ -65,6 +78,20 @@ export async function POST(request) {
     payload = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
+  // Honeypot — bots fill hidden fields, humans don't
+  if (payload?.website) {
+    return NextResponse.json({ ok: true, message: "Thank you." });
+  }
+
+  const ip = request.headers.get("cf-connecting-ip") ||
+             request.headers.get("x-forwarded-for") || "unknown";
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
+    );
   }
 
   const name = payload?.name?.trim();
