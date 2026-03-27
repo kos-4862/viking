@@ -56,7 +56,7 @@ export default function HomePage() {
         {/* 3. COACH — photo + expanded bio */}
         <section id="coach" className="section section-dark section-coach">
           <div className="coach-bg-photo" aria-hidden="true">
-            <img src="/images/coach-bg.jpg" alt="" loading="lazy" decoding="async" />
+            <img src="/images/arena.jpg" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="shell coach-profile">
             <p className="eyebrow">{copy.coach.eyebrow}</p>
