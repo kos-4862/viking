@@ -169,12 +169,6 @@ export function SiteHeader() {
 
           <div className="mobile-nav-panel">
             <LanguageRow locale={locale} setLocale={setLocale} />
-            {phoneHref ? (
-              <a className="mobile-nav-phone" href={phoneHref} onClick={closeMenu}>
-                <img src="/icons/phone.svg" alt="" aria-hidden="true" />
-                {phoneLabel}
-              </a>
-            ) : null}
             <a className="mobile-nav-link" href="/#contact" onClick={closeMenu}>
               {copy.header.mobileCtaLabel}
             </a>
@@ -182,11 +176,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="header-actions">
-          {phoneHref ? (
-            <a className="header-phone" href={phoneHref} aria-label={phoneLabel}>
-              <img src="/icons/phone.svg" alt="" aria-hidden="true" />
-            </a>
-          ) : null}
           <LanguageDropdown copy={copy} locale={locale} setLocale={setLocale} />
         </div>
       </div>
