@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const mainPhotos = [
   { src: "/images/gallery/main-01.jpg", alt: "Player kicking the ball" },
   { src: "/images/gallery/main-02.jpg", alt: "Friends on the field" },
-  { src: "/images/gallery/main-03.jpg", alt: "Coach with young players" },
+  { src: "/images/gallery/main-03.jpg", alt: "Team celebrating with Ukrainian flag and medals" },
   { src: "/images/gallery/main-04.jpg", alt: "Parents with Viking flag" },
   { src: "/images/gallery/main-05.jpg", alt: "Team photo at the goal" },
   { src: "/images/gallery/main-06.jpg", alt: "Match in the arena" },
