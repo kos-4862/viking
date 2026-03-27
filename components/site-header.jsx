@@ -141,7 +141,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         <a className="brand" href="/" aria-label="SC Viking home" onClick={closeMenu}>
-          <img src="/sc-viking-emblem.jpg" alt="SC Viking emblem" />
+          <img src="/sc-viking-emblem-transparent.png" alt="SC Viking emblem" />
           <div className="brand-copy">
             <strong>SC Viking</strong>
             <span>{copy.header.brandTagline}</span>
