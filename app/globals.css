@@ -343,8 +343,8 @@ input {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
   transition: border-color 0.2s, background 0.2s;
 }
 
@@ -352,7 +352,7 @@ input {
   width: 18px;
   height: 18px;
   filter: brightness(0) invert(1);
-  opacity: 0.9;
+  opacity: 1;
   transition: opacity 0.2s;
 }
 
@@ -1625,28 +1625,33 @@ input {
 }
 
 .contact-messengers__label {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
   color: var(--muted);
   margin-bottom: 14px;
 }
 
 .contact-messengers__buttons {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .messenger-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+  padding: 10px 16px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
@@ -1657,8 +1662,8 @@ input {
 }
 
 .messenger-btn--phone {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #2a2a30;
+  border: 1px solid #3a3a42;
   color: #fff;
 }
 
@@ -1897,8 +1902,8 @@ input {
 
 /* Messenger icons — colored */
 .mobile-bottom-bar .mbb-phone {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .mobile-bottom-bar .mbb-phone img {
