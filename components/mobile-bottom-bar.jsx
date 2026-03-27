@@ -12,6 +12,7 @@ export function MobileBottomBar() {
   const copy = getSiteCopy(locale);
 
   const whatsappUrl = config?.whatsappUrl || fallbackWhatsappUrl;
+  const phoneHref = config?.phoneHref || "tel:+380999513717";
 
   return (
     <div className="mobile-bottom-bar">
@@ -20,6 +21,9 @@ export function MobileBottomBar() {
       </a>
       <div className="mobile-bottom-bar__divider" />
       <div className="mobile-bottom-bar__messengers">
+        <a href={phoneHref} aria-label="Phone" className="mbb-phone">
+          <img src="/icons/phone.svg" alt="" aria-hidden="true" />
+        </a>
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="mbb-wa">
           <img src="/icons/whatsapp.svg" alt="" aria-hidden="true" />
         </a>

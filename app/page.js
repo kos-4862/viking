@@ -213,6 +213,10 @@ export default function HomePage() {
             <div className="contact-messengers">
               <p className="contact-messengers__label">{copy.contact.orLabel}</p>
               <div className="contact-messengers__buttons">
+                <a className="messenger-btn messenger-btn--phone" href="tel:+380999513717">
+                  <img src="/icons/phone.svg" alt="" aria-hidden="true" />
+                  <span>+380999513717</span>
+                </a>
                 <a className="messenger-btn messenger-btn--wa" href="https://wa.me/380999513717" target="_blank" rel="noopener noreferrer">
                   <img src="/icons/whatsapp.svg" alt="" aria-hidden="true" />
                   <span>WhatsApp</span>

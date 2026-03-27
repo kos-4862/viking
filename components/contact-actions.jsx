@@ -20,8 +20,8 @@ export function ContactActions() {
   const { locale } = useLocale();
   const copy = getSiteCopy(locale);
 
-  const phoneHref = config?.phoneHref || "";
-  const phoneLabel = config?.phoneLabel || "";
+  const phoneHref = config?.phoneHref || "tel:+380999513717";
+  const phoneLabel = config?.phoneLabel || "+380999513717";
   const whatsappUrl = config?.whatsappUrl || fallbackWhatsappUrl;
 
   if (!phoneHref && !whatsappUrl) {
@@ -35,8 +35,9 @@ export function ContactActions() {
   return (
     <div className="contact-actions">
       {phoneHref ? (
-        <a className="button button-secondary" href={phoneHref}>
-          {phoneLabel}
+        <a className="button button-secondary button-phone" href={phoneHref}>
+          <img className="button-icon" src="/icons/phone.svg" alt="" aria-hidden="true" />
+          <span>{phoneLabel}</span>
         </a>
       ) : null}
 

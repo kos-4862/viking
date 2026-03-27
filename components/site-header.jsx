@@ -125,8 +125,8 @@ export function SiteHeader() {
 
   const closeMenu = () => setOpen(false);
 
-  const phoneLabel = runtimeConfig?.phoneLabel || "";
-  const phoneHref = runtimeConfig?.phoneHref || "";
+  const phoneLabel = runtimeConfig?.phoneLabel || "+380999513717";
+  const phoneHref = runtimeConfig?.phoneHref || "tel:+380999513717";
   const whatsappUrl = runtimeConfig?.whatsappUrl || fallbackWhatsappUrl;
   const mobileSocialItems = [
     ...socialItems,
@@ -171,6 +171,7 @@ export function SiteHeader() {
             <LanguageRow locale={locale} setLocale={setLocale} />
             {phoneHref ? (
               <a className="mobile-nav-phone" href={phoneHref} onClick={closeMenu}>
+                <img src="/icons/phone.svg" alt="" aria-hidden="true" />
                 {phoneLabel}
               </a>
             ) : null}
@@ -181,12 +182,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="header-actions">
-          <LanguageDropdown copy={copy} locale={locale} setLocale={setLocale} />
           {phoneHref ? (
-            <a className="header-phone" href={phoneHref}>
-              {phoneLabel}
+            <a className="header-phone" href={phoneHref} aria-label={phoneLabel}>
+              <img src="/icons/phone.svg" alt="" aria-hidden="true" />
             </a>
           ) : null}
+          <LanguageDropdown copy={copy} locale={locale} setLocale={setLocale} />
         </div>
       </div>
     </header>
