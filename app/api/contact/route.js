@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getTelegramRuntimeConfig } from "@/lib/runtime-config";
 import { getSiteCopy } from "@/lib/site-copy";
 
+export const dynamic = "error";
+
 const NOTIFY_EMAIL = "scvikingur@gmail.com";
 
 async function sendEmail({ name, phone, age }) {
