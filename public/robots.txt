@@ -10,4 +10,13 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://sc-viking-site.kostyantyn.workers.dev/sitemap.xml
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://scviking2021.com/sitemap.xml

@@ -22,6 +22,9 @@ const SITE_URL = "https://scviking2021.com";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: {
+    other: { "msvalidate.01": "52CF6B3947142A72DCF25B82341764F3" },
+  },
   title: "SC Viking — Дитячий футбольний клуб у Бухаресті",
   description:
     "SC Viking — дитяча футбольна академія у Бухаресті для дітей 4–14 років. Тренер з ліцензією UEFA C, офіційні змагання AMFB, групи до 12 дітей. Пробне тренування безплатно.",
@@ -57,6 +60,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="uk" className={`${montserrat.variable} ${bebasNeue.variable}`}>
       <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-0WMTCBF9MN"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0WMTCBF9MN');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
