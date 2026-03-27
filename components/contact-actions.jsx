@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { getSiteCopy } from "@/lib/site-copy";
+import { useRuntimeConfig } from "@/lib/use-runtime-config";
 
 const fallbackWhatsappUrl = "https://wa.me/380999513717";
 
@@ -16,35 +16,9 @@ function WhatsAppLabel() {
 }
 
 export function ContactActions() {
-  const [config, setConfig] = useState(null);
+  const config = useRuntimeConfig();
   const { locale } = useLocale();
   const copy = getSiteCopy(locale);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadConfig() {
-      try {
-        const response = await fetch("/api/public-config", { cache: "no-store" });
-        if (!response.ok) {
-          return;
-        }
-
-        const data = await response.json();
-        if (isMounted) {
-          setConfig(data);
-        }
-      } catch {
-        // Ignore config fetch failures and keep the placeholder UI.
-      }
-    }
-
-    loadConfig();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const phoneHref = config?.phoneHref || "";
   const phoneLabel = config?.phoneLabel || "";

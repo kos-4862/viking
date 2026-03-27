@@ -1,16 +1,67 @@
 import "./globals.css";
+import { Montserrat, Bebas_Neue } from "next/font/google";
 import { LocaleProvider } from "@/components/locale-provider";
 import { ScrollManager } from "@/components/scroll-manager";
+import { getStructuredData } from "@/lib/structured-data";
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-display",
+});
+
+const SITE_URL = "https://sc-viking-site.kostyantyn.workers.dev";
 
 export const metadata = {
-  title: "SC Viking",
+  metadataBase: new URL(SITE_URL),
+  title: "SC Viking — Дитячий футбольний клуб у Бухаресті",
   description:
-    "SC Viking football club prototype on Next.js with a premium academy-style structure, dynamic contact form, and Cloudflare-ready deployment."
+    "SC Viking — дитяча футбольна академія у Бухаресті для дітей 4–14 років. Тренер з ліцензією UEFA C, офіційні змагання AMFB, групи до 12 дітей. Пробне тренування безплатно.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "SC Viking — Дитячий футбольний клуб у Бухаресті",
+    description:
+      "Футбольні тренування для дітей 4–14 років. Ліцензований тренер UEFA C, офіційні чемпіонати AMFB, групи до 12 дітей. Перше заняття безплатно.",
+    url: SITE_URL,
+    siteName: "SC Viking",
+    images: [{ url: "/images/about-team.jpg", width: 1200, height: 630, alt: "SC Viking — дитячий футбол у Бухаресті" }],
+    locale: "uk_UA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SC Viking — Дитячий футбольний клуб у Бухаресті",
+    description:
+      "Футбольні тренування для дітей 4–14 років. Ліцензований тренер UEFA C. Пробне тренування безплатно.",
+    images: ["/images/about-team.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }) {
+  const structuredData = getStructuredData();
+
   return (
-    <html lang="uk">
+    <html lang="uk" className={`${montserrat.variable} ${bebasNeue.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body>
         <LocaleProvider>
           <ScrollManager />

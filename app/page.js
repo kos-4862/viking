@@ -24,43 +24,26 @@ export default function HomePage() {
           </div>
           <div className="hero-backdrop" aria-hidden="true" />
           <div className="shell hero-content">
-            <p className="eyebrow">{copy.hero.eyebrow}</p>
-            <h1>{copy.hero.title}</h1>
-            <p className="lead">{copy.hero.lead}</p>
-            <a className="button button-primary" href="#contact">
-              {copy.hero.cta}
-            </a>
-            <p className="hero-sub">{copy.hero.ctaSub}</p>
-          </div>
-        </section>
-
-        {/* 2. HOW IT WORKS — 3 steps */}
-        <section className="section section-steps">
-          <div className="shell">
-            <div className="section-heading">
-              <p className="eyebrow">{copy.howItWorks.eyebrow}</p>
-              <h2>{copy.howItWorks.title}</h2>
-            </div>
-            <div className="steps-grid">
-              {copy.howItWorks.steps.map((step) => (
-                <article key={step.num} className="step-card">
-                  <span className="step-num">{step.num}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </article>
-              ))}
+            <p className="eyebrow hero-anim hero-anim-1">{copy.hero.eyebrow}</p>
+            <h1 className="hero-anim hero-anim-2">{copy.hero.title}</h1>
+            <p className="lead hero-anim hero-anim-3">{copy.hero.lead}</p>
+            <div className="hero-cta hero-anim hero-anim-4">
+              <a className="button button-primary hero-cta-btn" href="#contact">
+                {copy.hero.cta}
+              </a>
+              <p className="hero-sub">{copy.hero.ctaSub}</p>
             </div>
           </div>
         </section>
 
-        {/* 3. ABOUT — split layout with photo */}
+        {/* 2. ABOUT — split layout with photo */}
         <section id="about" className="section section-about">
           <div className="about-layout">
             <div className="about-photo-col">
               <img src="/images/about-team.jpg" alt="SC Viking team" loading="lazy" decoding="async" />
             </div>
             <div className="about-text-col">
-              <div className="about-content">
+              <div className="about-content reveal">
                 <p className="eyebrow">{copy.about.eyebrow}</p>
                 <h2>{copy.about.title}</h2>
                 <p>{copy.about.text}</p>
@@ -69,30 +52,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. ADVANTAGES — card grid */}
-        <section id="advantages" className="section section-light">
-          <div className="shell">
-            <div className="section-heading">
-              <p className="eyebrow">{copy.advantages.eyebrow}</p>
-              <h2>{copy.advantages.title}</h2>
-            </div>
-            <div className="grid grid-two">
-              {copy.advantages.items.map((item) => (
-                <article key={item.title} className="advantage-card">
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 5. COACH — photo + expanded bio */}
+        {/* 3. COACH — photo + expanded bio */}
         <section id="coach" className="section section-dark section-coach">
           <div className="coach-bg-photo" aria-hidden="true">
             <img src="/images/arena.jpg" alt="" loading="lazy" decoding="async" />
           </div>
-          <div className="shell coach-profile">
+          <div className="shell coach-profile reveal">
             <p className="eyebrow">{copy.coach.eyebrow}</p>
             <div className="coach-photo">
               <span>Р</span>
@@ -105,25 +70,34 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 6. FAQ — accordion-style */}
-        <section className="section section-light section-faq">
+        {/* Mid-page CTA */}
+        <section className="section section-midcta">
+          <div className="shell midcta-inner">
+            <a className="button button-primary" href="#contact">
+              {copy.hero.cta}
+            </a>
+          </div>
+        </section>
+
+        {/* 4. ADVANTAGES — card grid */}
+        <section id="advantages" className="section section-light">
           <div className="shell">
             <div className="section-heading">
-              <p className="eyebrow">{copy.faq.eyebrow}</p>
-              <h2>{copy.faq.title}</h2>
+              <p className="eyebrow">{copy.advantages.eyebrow}</p>
+              <h2>{copy.advantages.title}</h2>
             </div>
-            <div className="faq-list">
-              {copy.faq.items.map((item) => (
-                <details key={item.q} className="faq-item">
-                  <summary>{item.q}</summary>
-                  <p>{item.a}</p>
-                </details>
+            <div className="grid grid-two">
+              {copy.advantages.items.map((item, i) => (
+                <article key={item.title} className="advantage-card reveal reveal-stagger" style={{ "--stagger": i }}>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 7. GALLERY — photo grid */}
+        {/* 5. GALLERY — photo grid */}
         <section id="gallery" className="section section-gallery">
           <div className="shell">
             <div className="section-heading">
@@ -134,7 +108,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 8. VIDEO — YouTube shorts embedded */}
+        {/* 6. VIDEO — YouTube shorts embedded */}
         <section className="section section-video">
           <div className="shell">
             <div className="section-heading">
@@ -154,7 +128,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 9. LOCATION — photo + text split */}
+        {/* 7. LOCATION — photo + text split */}
         <section id="location" className="section section-light">
           <div className="shell">
             <div className="section-heading">
@@ -167,7 +141,7 @@ export default function HomePage() {
                 <span className="location-photo-label">{copy.location.photoLabel}</span>
               </div>
               <div className="location-text-col">
-                <div className="location-content">
+                <div className="location-content reveal">
                   <p>{copy.location.text}</p>
                   <a className="button button-map" href={copy.location.mapUrl} target="_blank" rel="noopener noreferrer">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -178,6 +152,43 @@ export default function HomePage() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. HOW IT WORKS — 3 steps */}
+        <section className="section section-steps">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">{copy.howItWorks.eyebrow}</p>
+              <h2>{copy.howItWorks.title}</h2>
+            </div>
+            <div className="steps-grid">
+              {copy.howItWorks.steps.map((step, i) => (
+                <article key={step.num} className="step-card reveal reveal-stagger" style={{ "--stagger": i }}>
+                  <span className="step-num">{step.num}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 9. FAQ — accordion-style */}
+        <section className="section section-light section-faq">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">{copy.faq.eyebrow}</p>
+              <h2>{copy.faq.title}</h2>
+            </div>
+            <div className="faq-list">
+              {copy.faq.items.map((item) => (
+                <details key={item.q} className="faq-item">
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>

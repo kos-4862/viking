@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Bebas+Neue&display=swap");
-
 /* ============================================================
    DESIGN TOKENS
    ============================================================ */
@@ -32,7 +30,7 @@
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-body, "Montserrat", sans-serif);
   background: var(--bg);
   color: var(--text);
 }
@@ -119,14 +117,17 @@ input {
 
 .section-heading h2 {
   margin: 0;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display, "Bebas Neue", sans-serif);
   font-size: clamp(46px, 6vw, 74px);
   line-height: 0.95;
   letter-spacing: 0.04em;
   color: var(--dark-text);
 }
 
-.section-dark .section-heading h2 {
+.section-dark .section-heading h2,
+.section-steps .section-heading h2,
+.section-gallery .section-heading h2,
+.section-video .section-heading h2 {
   color: #fff;
 }
 
@@ -184,7 +185,7 @@ input {
 }
 
 .brand-copy strong {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display, "Bebas Neue", sans-serif);
   font-size: 38px;
   line-height: 0.9;
   letter-spacing: 0.04em;
@@ -219,7 +220,7 @@ input {
 }
 
 .primary-nav a {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .primary-nav a:hover {
@@ -589,6 +590,25 @@ input {
 }
 
 /* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger {
+  transition-delay: calc(var(--stagger, 0) * 80ms);
+}
+
+/* ============================================================
    HERO
    ============================================================ */
 
@@ -629,7 +649,7 @@ input {
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  filter: saturate(0.75) brightness(0.65);
+  filter: saturate(0.85) brightness(0.75);
 }
 
 .hero-bg-photo::after {
@@ -647,12 +667,21 @@ input {
   z-index: 1;
   text-align: center;
   max-width: 720px;
-  animation: fadeInUp 0.8s ease-out both;
 }
+
+.hero-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+.hero-anim-1 { animation-delay: 0.1s; }
+.hero-anim-2 { animation-delay: 0.25s; }
+.hero-anim-3 { animation-delay: 0.4s; }
+.hero-anim-4 { animation-delay: 0.55s; }
 
 .hero h1 {
   margin: 0;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display, "Bebas Neue", sans-serif);
   font-size: clamp(78px, 14vw, 148px);
   line-height: 0.95;
   letter-spacing: 0.04em;
@@ -677,6 +706,31 @@ input {
   color: var(--muted);
   margin-top: 14px;
   letter-spacing: 0.06em;
+}
+
+.hero-cta-btn {
+  animation: pulse 2.5s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 14px 36px rgba(218, 17, 35, 0.28); }
+  50% { box-shadow: 0 18px 44px rgba(218, 17, 35, 0.45); }
+}
+
+/* ============================================================
+   MID-PAGE CTA SECTION
+   ============================================================ */
+
+.section-midcta {
+  padding: 48px 0;
+  background: linear-gradient(180deg, #121219 0%, #0f0f14 100%);
+  text-align: center;
+}
+
+.midcta-inner {
+  display: flex;
+  justify-content: center;
 }
 
 /* ============================================================
@@ -797,7 +851,7 @@ input {
 
 .advantage-card h3 {
   margin: 0 0 12px;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display, "Bebas Neue", sans-serif);
   font-size: 28px;
   line-height: 1;
   letter-spacing: 0.04em;
@@ -809,6 +863,10 @@ input {
   font-size: 15px;
   line-height: 1.7;
   color: #515764;
+}
+
+.advantage-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 /* ============================================================
@@ -873,7 +931,7 @@ input {
 
 .coach-profile h3 {
   margin: 0 0 6px;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display, "Bebas Neue", sans-serif);
   font-size: 40px;
   line-height: 0.95;
   letter-spacing: 0.04em;
@@ -1066,6 +1124,30 @@ input {
 .lightbox-close:hover {
   opacity: 1;
 }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 201;
+}
+.lightbox-nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
 
 /* ============================================================
    VIDEO SECTION — YouTube shorts grid
@@ -1272,7 +1354,7 @@ input {
 
 .form-card__header h3 {
   margin: 0;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display, "Bebas Neue", sans-serif);
   font-size: 38px;
   line-height: 0.95;
   letter-spacing: 0.04em;
@@ -1460,7 +1542,7 @@ input {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-inner strong {
@@ -1583,6 +1665,40 @@ input {
   width: 17px;
   height: 17px;
   opacity: 0.6;
+}
+
+/* ============================================================
+   ACCESSIBILITY — FOCUS VISIBLE
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   ACCESSIBILITY — REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim,
+  .reveal,
+  .reveal-stagger {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-cta-btn {
+    animation: none !important;
+  }
 }
 
 /* ============================================================
@@ -1732,6 +1848,26 @@ input {
     scroll-snap-align: center;
     aspect-ratio: 4/3;
     height: auto;
+  }
+
+  .gallery-scroll {
+    position: relative;
+  }
+
+  .section-gallery .shell {
+    position: relative;
+  }
+
+  .section-gallery .shell::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(90deg, transparent, #0f0f14);
+    pointer-events: none;
+    z-index: 2;
   }
 
   /* Location — single column */

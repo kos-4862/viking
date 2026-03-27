@@ -65,13 +65,13 @@ export function ContactForm() {
         </label>
         <label className="field">
           <span>{copy.form.fields.phoneLabel}</span>
-          <input name="phone" value={form.phone} onChange={updateField} placeholder={copy.form.fields.phonePlaceholder} required />
+          <input name="phone" type="tel" value={form.phone} onChange={updateField} placeholder={copy.form.fields.phonePlaceholder} required />
         </label>
       </div>
 
       <label className="field">
         <span>{copy.form.fields.ageLabel}</span>
-        <input name="age" value={form.age} onChange={updateField} placeholder={copy.form.fields.agePlaceholder} required />
+        <input name="age" inputMode="numeric" value={form.age} onChange={updateField} placeholder={copy.form.fields.agePlaceholder} required />
       </label>
 
       <button className="button button-primary" type="submit" disabled={status === "loading"}>

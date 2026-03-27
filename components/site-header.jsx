@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getSiteCopy, supportedLocales } from "@/lib/site-copy";
 import { useLocale } from "@/components/locale-provider";
+import { useRuntimeConfig } from "@/lib/use-runtime-config";
 
 const socialItems = [
   {
@@ -98,37 +99,11 @@ function LanguageDropdown({ copy, locale, setLocale, mobile = false }) {
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [runtimeConfig, setRuntimeConfig] = useState(null);
+  const runtimeConfig = useRuntimeConfig();
   const { locale, setLocale } = useLocale();
   const copy = getSiteCopy(locale);
 
   const closeMenu = () => setOpen(false);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function loadConfig() {
-      try {
-        const response = await fetch("/api/public-config", { cache: "no-store" });
-        if (!response.ok) {
-          return;
-        }
-
-        const data = await response.json();
-        if (isMounted) {
-          setRuntimeConfig(data);
-        }
-      } catch {
-        // Leave header on static fallback if runtime config is unavailable.
-      }
-    }
-
-    loadConfig();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const phoneLabel = runtimeConfig?.phoneLabel || "";
   const phoneHref = runtimeConfig?.phoneHref || "";
@@ -156,6 +131,7 @@ export function SiteHeader() {
         <button
           className="menu-toggle"
           type="button"
+          aria-label="Menu"
           aria-expanded={open}
           aria-controls="primary-nav"
           onClick={() => setOpen((value) => !value)}

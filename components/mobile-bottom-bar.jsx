@@ -1,20 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRuntimeConfig } from "@/lib/use-runtime-config";
 
 const fallbackWhatsappUrl = "https://wa.me/380999513717";
 
 export function MobileBottomBar() {
-  const [config, setConfig] = useState(null);
-
-  useEffect(() => {
-    let mounted = true;
-    fetch("/api/public-config", { cache: "no-store" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => mounted && data && setConfig(data))
-      .catch(() => {});
-    return () => { mounted = false; };
-  }, []);
+  const config = useRuntimeConfig();
 
   const whatsappUrl = config?.whatsappUrl || fallbackWhatsappUrl;
 

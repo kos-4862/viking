@@ -51,8 +51,20 @@ async function sendTelegram({ name, phone, age }) {
   return res.ok;
 }
 
+function sanitize(str) {
+  return str.replace(/[<>]/g, (ch) => (ch === "<" ? "&lt;" : "&gt;"));
+}
+
+const MAX_LEN = { name: 100, phone: 30, age: 10 };
+
 export async function POST(request) {
-  const payload = await request.json();
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+
   const name = payload?.name?.trim();
   const phone = payload?.phone?.trim();
   const age = payload?.age?.trim();
@@ -66,7 +78,14 @@ export async function POST(request) {
     );
   }
 
-  const lead = { name, phone, age };
+  if (name.length > MAX_LEN.name || phone.length > MAX_LEN.phone || age.length > MAX_LEN.age) {
+    return NextResponse.json(
+      { error: copy.form.validationError },
+      { status: 400 }
+    );
+  }
+
+  const lead = { name: sanitize(name), phone: sanitize(phone), age: sanitize(age) };
 
   const [emailOk, telegramOk] = await Promise.all([
     sendEmail(lead).catch(() => false),
