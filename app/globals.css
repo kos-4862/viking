@@ -1195,18 +1195,13 @@ input {
 }
 
 .video-strip__item {
-  flex: 0 0 auto;
-  height: 380px;
+  flex: 0 0 260px;
   scroll-snap-align: start;
 }
 
 .video-strip__item .video-tile {
-  height: 100%;
-  width: auto;
-}
-
-.video-strip__item--short {
-  /* short keeps 9:16 at same height → narrower card */
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .video-strip__arrow {
@@ -2072,7 +2067,7 @@ button:focus-visible {
   }
 
   .video-strip__item {
-    height: 280px;
+    flex: 0 0 200px;
   }
 
   .video-strip__arrow {
