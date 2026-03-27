@@ -1692,11 +1692,11 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 0 20px;
+  min-height: 48px;
+  padding: 14px 20px;
   background: var(--accent);
   color: #fff;
-  border-radius: 999px;
+  border-radius: 10px;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -1726,7 +1726,7 @@ input {
   flex: 0 0 auto;
 }
 
-.mobile-bottom-bar a {
+.mobile-bottom-bar a:not(.mbb-cta) {
   display: inline-flex;
   align-items: center;
   justify-content: center;

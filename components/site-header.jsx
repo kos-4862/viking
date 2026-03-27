@@ -167,16 +167,6 @@ export function SiteHeader() {
               {phoneLabel}
             </a>
           ) : null}
-          <a
-            className="header-wa"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-          >
-            <img src="/icons/whatsapp.svg" alt="" aria-hidden="true" />
-            <span>WhatsApp</span>
-          </a>
         </div>
       </div>
     </header>
