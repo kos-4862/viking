@@ -249,6 +249,9 @@ export default function HomePage() {
               <a href="https://www.tiktok.com/@fcvb.2021" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                 <img src="/icons/tiktok.svg" alt="" aria-hidden="true" />
               </a>
+              <a href="https://www.youtube.com/channel/UCD5ho8RpSJ8vccMVvprGpwQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <img src="/icons/youtube.svg" alt="" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </div>

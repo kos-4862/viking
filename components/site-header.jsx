@@ -25,6 +25,11 @@ const socialItems = [
     href: "https://t.me/RostyslavByanov",
     label: "Telegram",
     icon: "/icons/telegram.svg"
+  },
+  {
+    href: "https://www.youtube.com/channel/UCD5ho8RpSJ8vccMVvprGpwQ",
+    label: "YouTube",
+    icon: "/icons/youtube.svg"
   }
 ];
 
