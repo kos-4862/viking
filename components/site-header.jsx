@@ -120,7 +120,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <a className="brand" href="#top" aria-label="SC Viking home" onClick={closeMenu}>
+        <a className="brand" href="/" aria-label="SC Viking home" onClick={closeMenu}>
           <img src="/sc-viking-emblem.jpg" alt="SC Viking emblem" />
           <div className="brand-copy">
             <strong>SC Viking</strong>
@@ -142,7 +142,7 @@ export function SiteHeader() {
 
         <nav id="primary-nav" className={`primary-nav${open ? " is-open" : ""}`} aria-label="Primary">
           {copy.header.navItems.map((item) => (
-            <a key={item.href} href={item.href} onClick={closeMenu}>
+            <a key={item.href} href={`/${item.href}`} onClick={closeMenu}>
               {item.label}
             </a>
           ))}
@@ -154,7 +154,7 @@ export function SiteHeader() {
                 {phoneLabel}
               </a>
             ) : null}
-            <a className="mobile-nav-link" href="#contact" onClick={closeMenu}>
+            <a className="mobile-nav-link" href="/#contact" onClick={closeMenu}>
               {copy.header.mobileCtaLabel}
             </a>
           </div>

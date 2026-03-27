@@ -1,16 +1,25 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const photos = [
-  { src: "/images/gallery-action.jpg", alt: "Player in action" },
-  { src: "/images/gallery-match.jpg", alt: "Match in arena" },
-  { src: "/images/gallery-group.jpg", alt: "Club event" },
-  { src: "/images/gallery-team2.jpg", alt: "Outdoor training" },
-  { src: "/images/gallery-coach.jpg", alt: "Coach with team" },
-  { src: "/images/gallery-event.jpg", alt: "Team celebration" },
+const mainPhotos = [
+  { src: "/images/gallery/main-01.jpg", alt: "Player kicking the ball" },
+  { src: "/images/gallery/main-02.jpg", alt: "Friends on the field" },
+  { src: "/images/gallery/main-03.jpg", alt: "Coach with young players" },
+  { src: "/images/gallery/main-04.jpg", alt: "Parents with Viking flag" },
+  { src: "/images/gallery/main-05.jpg", alt: "Team photo at the goal" },
+  { src: "/images/gallery/main-06.jpg", alt: "Match in the arena" },
+  { src: "/images/gallery/main-07.jpg", alt: "Team in the arena" },
+  { src: "/images/gallery/main-08.jpg", alt: "Winter team photo" },
 ];
 
-export function PhotoGallery() {
+const allPhotos = Array.from({ length: 31 }, (_, i) => ({
+  src: `/images/gallery/photo-${String(i + 1).padStart(2, "0")}.jpg`,
+  alt: `SC Viking photo ${i + 1}`,
+}));
+
+export { mainPhotos, allPhotos };
+
+export function PhotoGallery({ photos = mainPhotos }) {
   const [active, setActive] = useState(null);
   const dialogRef = useRef(null);
 

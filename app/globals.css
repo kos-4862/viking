@@ -829,6 +829,45 @@ input {
   margin-top: 20px;
 }
 
+.age-badges {
+  display: flex;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.age-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 24px;
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  border-radius: 12px;
+  background: rgba(250, 204, 21, 0.06);
+  min-width: 110px;
+}
+
+.age-badge-ages {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.age-badge-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.about-practice {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
 /* ============================================================
    ADVANTAGES SECTION
    ============================================================ */
@@ -1053,10 +1092,8 @@ input {
 }
 
 .gallery-scroll {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 260px;
-  gap: 12px;
+  columns: 3;
+  column-gap: 12px;
 }
 
 .gallery-item {
@@ -1067,14 +1104,16 @@ input {
   cursor: pointer;
   padding: 0;
   border: 0;
+  break-inside: avoid;
+  margin-bottom: 12px;
+  display: block;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+  height: auto;
   display: block;
+  transition: transform 0.5s ease;
 }
 
 .gallery-item:hover img {
@@ -1304,11 +1343,13 @@ input {
   border: 0;
 }
 
+.gallery-more,
 .video-more {
   text-align: center;
   margin-top: 48px;
 }
 
+.gallery-more a,
 .video-more a {
   color: var(--muted);
   font-size: 0.85rem;
@@ -1317,7 +1358,27 @@ input {
   transition: color 0.2s;
 }
 
+.gallery-more a:hover,
 .video-more a:hover {
+  color: var(--accent);
+}
+
+/* Gallery page */
+.gallery-page {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+}
+
+.gallery-back {
+  display: inline-block;
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+
+.gallery-back:hover {
   color: var(--accent);
 }
 
@@ -1936,25 +1997,33 @@ button:focus-visible {
     padding: 36px 24px;
   }
 
+  .age-badges {
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .age-badge {
+    padding: 12px 14px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .age-badge-ages {
+    font-size: 18px;
+  }
+
+  .age-badge-label {
+    font-size: 11px;
+  }
+
   /* Gallery — horizontal scroll strip on mobile */
   .gallery-scroll {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 12px;
-    padding-bottom: 8px;
+    columns: 2;
+    column-gap: 10px;
   }
 
-  .gallery-scroll .gallery-item {
-    flex: 0 0 75vw;
-    scroll-snap-align: center;
-    aspect-ratio: 4/3;
-    height: auto;
-  }
-
-  .gallery-scroll {
-    position: relative;
+  .gallery-item {
+    margin-bottom: 10px;
   }
 
   .section-gallery .shell {

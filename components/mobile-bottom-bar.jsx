@@ -15,7 +15,7 @@ export function MobileBottomBar() {
 
   return (
     <div className="mobile-bottom-bar">
-      <a href="#contact" className="mbb-cta">
+      <a href="/#contact" className="mbb-cta">
         Зв'язатися з нами
       </a>
       <div className="mobile-bottom-bar__divider" />

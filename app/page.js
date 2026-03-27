@@ -47,7 +47,17 @@ export default function HomePage() {
               <div className="about-content">
                 <p className="eyebrow">{copy.about.eyebrow}</p>
                 <h2>{copy.about.title}</h2>
-                <p>{copy.about.text}</p>
+                <p>{copy.about.intro}</p>
+                <p>{copy.about.approach}</p>
+                <div className="age-badges">
+                  {copy.about.groups.map((g) => (
+                    <div key={g.ages} className="age-badge">
+                      <span className="age-badge-ages">{g.ages}</span>
+                      <span className="age-badge-label">{g.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="about-practice">{copy.about.practice}</p>
               </div>
             </div>
           </div>
@@ -105,6 +115,9 @@ export default function HomePage() {
               <h2>{copy.gallery.title}</h2>
             </div>
             <PhotoGallery />
+            <p className="gallery-more">
+              <a href="/gallery">{copy.gallery.viewAll || "Дивитись всю галерею"} →</a>
+            </p>
           </div>
         </section>
 
