@@ -395,8 +395,6 @@ input {
 }
 
 .mbb-phone img {
-  width: 20px;
-  height: 20px;
   filter: brightness(0) invert(1);
 }
 
@@ -1997,14 +1995,20 @@ button:focus-visible {
   }
 
   .site-header {
-    padding: 12px 0;
+    padding: 0;
+  }
+
+  .site-header .shell {
+    width: 100%;
   }
 
   .header-inner {
     position: relative;
     gap: 14px;
     padding: 14px 16px;
-    border-radius: 24px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
     justify-content: center;
   }
 
