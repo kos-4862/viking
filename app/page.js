@@ -52,7 +52,7 @@ export default function HomePage() {
                 <div className="age-badges">
                   {copy.about.groups.map((g) => (
                     <div key={g.ages} className="age-badge">
-                      <span className="age-badge-ages">{g.ages}</span>
+                      <span className="age-badge-ages">{g.ages} {g.ageUnit}</span>
                       <span className="age-badge-label">{g.label}</span>
                     </div>
                   ))}
