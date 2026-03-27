@@ -12,7 +12,7 @@ const mainPhotos = [
   { src: "/images/gallery/main-08.jpg", alt: "Winter team photo" },
 ];
 
-const allPhotos = Array.from({ length: 31 }, (_, i) => ({
+const allPhotos = Array.from({ length: 30 }, (_, i) => ({
   src: `/images/gallery/photo-${String(i + 1).padStart(2, "0")}.jpg`,
   alt: `SC Viking photo ${i + 1}`,
 }));
