@@ -1905,9 +1905,15 @@ input {
 }
 
 .mobile-bottom-bar .mbb-phone img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   filter: brightness(0) invert(1);
+}
+
+.mobile-bottom-bar .mbb-wa img,
+.mobile-bottom-bar .mbb-tg img {
+  width: 40px;
+  height: 40px;
 }
 
 .mobile-bottom-bar .mbb-wa {
