@@ -4,7 +4,9 @@ import { useState } from "react";
 
 export function VideoTile({ videoId, isShort, title }) {
   const [active, setActive] = useState(false);
-  const thumbUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const thumbUrl = isShort
+    ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+    : `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
 
   if (active) {
     return (

@@ -2,7 +2,7 @@
 
 import { ContactForm } from "@/components/contact-form";
 import { MobileBottomBar } from "@/components/mobile-bottom-bar";
-import { VideoTile } from "@/components/video-tile";
+import { VideoCarousel } from "@/components/video-carousel";
 import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { getSiteCopy } from "@/lib/site-copy";
@@ -31,7 +31,6 @@ export default function HomePage() {
               <a className="button button-primary hero-cta-btn" href="#contact">
                 {copy.hero.cta}
               </a>
-              <p className="hero-sub">{copy.hero.ctaSub}</p>
             </div>
           </div>
         </section>
@@ -43,7 +42,7 @@ export default function HomePage() {
               <img src="/images/about-team.jpg" alt="SC Viking team" loading="lazy" decoding="async" />
             </div>
             <div className="about-text-col">
-              <div className="about-content reveal">
+              <div className="about-content">
                 <p className="eyebrow">{copy.about.eyebrow}</p>
                 <h2>{copy.about.title}</h2>
                 <p>{copy.about.text}</p>
@@ -57,14 +56,13 @@ export default function HomePage() {
           <div className="coach-bg-photo" aria-hidden="true">
             <img src="/images/arena.jpg" alt="" loading="lazy" decoding="async" />
           </div>
-          <div className="shell coach-profile reveal">
+          <div className="shell coach-profile">
             <p className="eyebrow">{copy.coach.eyebrow}</p>
             <div className="coach-photo">
               <span>Р</span>
             </div>
             <h2>{copy.coach.name}</h2>
-            <p className="coach-role">{copy.coach.role}</p>
-            <p className="coach-credential">{copy.coach.credential}</p>
+            <p className="coach-role">{copy.coach.role} · {copy.coach.credential}</p>
             <p>{copy.coach.bio}</p>
             <blockquote className="coach-quote">{copy.coach.philosophy}</blockquote>
           </div>
@@ -88,7 +86,7 @@ export default function HomePage() {
             </div>
             <div className="grid grid-two">
               {copy.advantages.items.map((item, i) => (
-                <article key={item.title} className="advantage-card reveal reveal-stagger" style={{ "--stagger": i }}>
+                <article key={item.title} className="advantage-card">
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </article>
@@ -115,11 +113,7 @@ export default function HomePage() {
               <p className="eyebrow">{copy.video.eyebrow}</p>
               <h2>{copy.video.title}</h2>
             </div>
-            <div className="video-grid">
-              <VideoTile videoId="EqWP39F4X9g" isShort title="SC Viking training" />
-              <VideoTile videoId="7fR598yhHEE" isShort title="SC Viking match" />
-              <VideoTile videoId="H866o3xaaD8" isShort title="SC Viking goal" />
-            </div>
+            <VideoCarousel />
             <p className="video-more">
               <a href="https://youtube.com/@vikingsk-2021" target="_blank" rel="noopener noreferrer">
                 {copy.video.youtubeLabel} →
@@ -141,7 +135,7 @@ export default function HomePage() {
                 <span className="location-photo-label">{copy.location.photoLabel}</span>
               </div>
               <div className="location-text-col">
-                <div className="location-content reveal">
+                <div className="location-content">
                   <p>{copy.location.text}</p>
                   <a className="button button-map" href={copy.location.mapUrl} target="_blank" rel="noopener noreferrer">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -165,7 +159,7 @@ export default function HomePage() {
             </div>
             <div className="steps-grid">
               {copy.howItWorks.steps.map((step, i) => (
-                <article key={step.num} className="step-card reveal reveal-stagger" style={{ "--stagger": i }}>
+                <article key={step.num} className="step-card">
                   <span className="step-num">{step.num}</span>
                   <h3>{step.title}</h3>
                   <p>{step.text}</p>
