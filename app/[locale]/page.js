@@ -22,7 +22,7 @@ export default function HomePage() {
         {/* 1. HERO — photo background, centered */}
         <section className="hero">
           <div className="hero-bg-photo" aria-hidden="true">
-            <img src="/images/hero-bg.jpg" alt="" fetchPriority="high" decoding="async" />
+            <img src="/images/hero-bg.jpg" alt="SC Viking children's football training" fetchPriority="high" decoding="async" />
           </div>
           <div className="hero-backdrop" aria-hidden="true" />
           <div className="shell hero-content">
@@ -66,7 +66,7 @@ export default function HomePage() {
         {/* 3. COACH — photo + expanded bio */}
         <section id="coach" className="section section-dark section-coach">
           <div className="coach-bg-photo" aria-hidden="true">
-            <img src="/images/arena.jpg" alt="" loading="lazy" decoding="async" />
+            <img src="/images/arena.jpg" alt="SC Viking indoor training arena" loading="lazy" decoding="async" />
           </div>
           <div className="shell coach-profile">
             <p className="eyebrow">{copy.coach.eyebrow}</p>
@@ -214,15 +214,15 @@ export default function HomePage() {
               <p className="contact-messengers__label">{copy.contact.orLabel}</p>
               <div className="contact-messengers__buttons">
                 <a className="messenger-btn messenger-btn--phone" href="tel:+380999513717">
-                  <img src="/icons/phone.svg" alt="" aria-hidden="true" />
+                  <img src="/icons/phone.svg" alt="Phone" aria-hidden="true" />
                   <span>+380999513717</span>
                 </a>
                 <a className="messenger-btn messenger-btn--wa" href="https://wa.me/380999513717" target="_blank" rel="noopener noreferrer">
-                  <img src="/icons/whatsapp.svg" alt="" aria-hidden="true" />
+                  <img src="/icons/whatsapp.svg" alt="WhatsApp" aria-hidden="true" />
                   <span>WhatsApp</span>
                 </a>
                 <a className="messenger-btn messenger-btn--tg" href="https://t.me/RostyslavByanov" target="_blank" rel="noopener noreferrer">
-                  <img src="/icons/telegram.svg" alt="" aria-hidden="true" />
+                  <img src="/icons/telegram.svg" alt="Telegram" aria-hidden="true" />
                   <span>Telegram</span>
                 </a>
               </div>
@@ -241,16 +241,16 @@ export default function HomePage() {
             <p className="footer-social-label">{copy.footer.followLabel}</p>
             <div className="footer-socials">
               <a href="https://www.facebook.com/sc.viking" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <img src="/icons/facebook.svg" alt="" aria-hidden="true" />
+                <img src="/icons/facebook.svg" alt="Facebook" aria-hidden="true" />
               </a>
               <a href="https://www.instagram.com/fcvb.2021/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <img src="/icons/instagram.svg" alt="" aria-hidden="true" />
+                <img src="/icons/instagram.svg" alt="Instagram" aria-hidden="true" />
               </a>
               <a href="https://www.tiktok.com/@fcvb.2021" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                <img src="/icons/tiktok.svg" alt="" aria-hidden="true" />
+                <img src="/icons/tiktok.svg" alt="TikTok" aria-hidden="true" />
               </a>
               <a href="https://www.youtube.com/channel/UCD5ho8RpSJ8vccMVvprGpwQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <img src="/icons/youtube.svg" alt="" aria-hidden="true" />
+                <img src="/icons/youtube.svg" alt="YouTube" aria-hidden="true" />
               </a>
             </div>
           </div>

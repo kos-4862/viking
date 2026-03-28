@@ -34,13 +34,13 @@ export default function GalleryPage() {
             <p className="footer-social-label">{copy.footer.followLabel}</p>
             <div className="footer-socials">
               <a href="https://www.facebook.com/sc.viking" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <img src="/icons/facebook.svg" alt="" aria-hidden="true" />
+                <img src="/icons/facebook.svg" alt="Facebook" aria-hidden="true" />
               </a>
               <a href="https://www.instagram.com/fcvb.2021/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <img src="/icons/instagram.svg" alt="" aria-hidden="true" />
+                <img src="/icons/instagram.svg" alt="Instagram" aria-hidden="true" />
               </a>
               <a href="https://www.tiktok.com/@fcvb.2021" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                <img src="/icons/tiktok.svg" alt="" aria-hidden="true" />
+                <img src="/icons/tiktok.svg" alt="TikTok" aria-hidden="true" />
               </a>
             </div>
           </div>

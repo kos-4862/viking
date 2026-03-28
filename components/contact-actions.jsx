@@ -9,7 +9,7 @@ const fallbackWhatsappUrl = "https://wa.me/380999513717";
 function WhatsAppLabel() {
   return (
     <>
-      <img className="button-icon" src="/icons/whatsapp.svg" alt="" aria-hidden="true" />
+      <img className="button-icon" src="/icons/whatsapp.svg" alt="WhatsApp" aria-hidden="true" />
       <span>WhatsApp</span>
     </>
   );
@@ -36,7 +36,7 @@ export function ContactActions() {
     <div className="contact-actions">
       {phoneHref ? (
         <a className="button button-secondary button-phone" href={phoneHref}>
-          <img className="button-icon" src="/icons/phone.svg" alt="" aria-hidden="true" />
+          <img className="button-icon" src="/icons/phone.svg" alt="Phone" aria-hidden="true" />
           <span>{phoneLabel}</span>
         </a>
       ) : null}

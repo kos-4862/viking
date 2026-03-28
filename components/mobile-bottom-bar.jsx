@@ -22,13 +22,13 @@ export function MobileBottomBar() {
       <div className="mobile-bottom-bar__divider" />
       <div className="mobile-bottom-bar__messengers">
         <a href={phoneHref} aria-label="Phone" className="mbb-phone" onClick={() => window.gtag?.("event", "contact_click", { method: "phone" })}>
-          <img src="/icons/phone.svg" alt="" aria-hidden="true" />
+          <img src="/icons/phone.svg" alt="Phone" aria-hidden="true" />
         </a>
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="mbb-wa" onClick={() => window.gtag?.("event", "contact_click", { method: "whatsapp" })}>
-          <img src="/icons/whatsapp.svg" alt="" aria-hidden="true" />
+          <img src="/icons/whatsapp.svg" alt="WhatsApp" aria-hidden="true" />
         </a>
         <a href="https://t.me/RostyslavByanov" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="mbb-tg" onClick={() => window.gtag?.("event", "contact_click", { method: "telegram" })}>
-          <img src="/icons/telegram.svg" alt="" aria-hidden="true" />
+          <img src="/icons/telegram.svg" alt="Telegram" aria-hidden="true" />
         </a>
       </div>
     </div>
