@@ -94,6 +94,26 @@ export function PhotoGallery({ photos = mainPhotos, paginated = false }) {
     setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, photos.length));
   }
 
+  const touchRef = useRef(null);
+
+  function onTouchStart(e) {
+    const t = e.touches[0];
+    touchRef.current = { x: t.clientX, y: t.clientY };
+  }
+
+  function onTouchEnd(e) {
+    if (!touchRef.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchRef.current.x;
+    const dy = t.clientY - touchRef.current.y;
+    touchRef.current = null;
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 50) {
+      dy < 0 ? showNext() : showPrev();
+    } else if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      dx < 0 ? showNext() : showPrev();
+    }
+  }
+
   return (
     <>
       <div className="gallery-scroll">
@@ -125,6 +145,8 @@ export function PhotoGallery({ photos = mainPhotos, paginated = false }) {
           ref={dialogRef}
           className="lightbox"
           onClick={() => setActive(null)}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
           role="dialog"
           aria-modal="true"
           aria-label={photos[active].alt}
