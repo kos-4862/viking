@@ -449,13 +449,13 @@ input {
 }
 
 .social-strip svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .social-strip img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
 }
 
@@ -1802,8 +1802,8 @@ input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.12);
   transition: border-color 0.2s, background 0.2s;
@@ -1815,8 +1815,8 @@ input {
 }
 
 .footer-socials img {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   opacity: 0.7;
 }
 
