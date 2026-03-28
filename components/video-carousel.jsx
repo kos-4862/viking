@@ -12,7 +12,7 @@ const shorts = [
   { id: "JO6YakcAQzU", title: "Tournament Goal Moment" },
   { id: "lWHSUdoaFnM", title: "Tournament Match Action" },
   { id: "R_Z0DxhNDxE", title: "Training Atmosphere" },
-  { id: "aba3jME0VTU", title: "Match vs Purple Team" },
+  { id: "aba3jME0VTU", title: "Stelele Viitorului Cup" },
 ];
 
 // Horizontal videos (16:9) — shown as highlights
