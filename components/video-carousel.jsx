@@ -4,26 +4,28 @@ import { useRef, useState } from "react";
 import { VideoTile } from "@/components/video-tile";
 import { ShortsModal } from "@/components/shorts-modal";
 
+// Vertical videos (9:16) — shown as Shorts
 const shorts = [
   { id: "EqWP39F4X9g", title: "Agility Training Drill" },
   { id: "7fR598yhHEE", title: "Team Spirit" },
   { id: "H866o3xaaD8", title: "Tournament Day" },
   { id: "JO6YakcAQzU", title: "Tournament Goal Moment" },
   { id: "lWHSUdoaFnM", title: "Tournament Match Action" },
-  { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
-  { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
-  { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
+  { id: "R_Z0DxhNDxE", title: "Training Atmosphere" },
 ];
 
+// Horizontal videos (16:9) — shown as highlights
 const highlights = [
   { id: "b7dCTjfvfmE", title: "Outdoor Match Highlights" },
-  { id: "aba3jME0VTU", title: "Match vs Purple Team" },
   { id: "Ns5ek9PI9JY", title: "Outdoor Match — Drone View" },
   { id: "k-e4fuMrmuo", title: "Indoor Match vs Blue Team" },
   { id: "ZF8oyTL2RcA", title: "Match Under Coach's Eye" },
-  { id: "R_Z0DxhNDxE", title: "Fair Play on the Pitch" },
   { id: "z_sypUed8jQ", title: "Training with Coach" },
   { id: "HGJVPO-lGwg", title: "Indoor Game Day" },
+  { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
+  { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
+  { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
+  { id: "aba3jME0VTU", title: "Match vs Purple Team" },
 ];
 
 export function VideoCarousel() {
