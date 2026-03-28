@@ -26,7 +26,13 @@ export function middleware(request) {
     );
   }
 
-  return NextResponse.next();
+  const currentLocale = locales.find(
+    (l) => pathname.startsWith(`/${l}/`) || pathname === `/${l}`
+  ) || defaultLocale;
+
+  const response = NextResponse.next();
+  response.headers.set("x-locale", currentLocale);
+  return response;
 }
 
 export const config = {

@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Montserrat, Bebas_Neue } from "next/font/google";
 import { getStructuredData } from "@/lib/structured-data";
+import { headers } from "next/headers";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -16,6 +17,8 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-display",
 });
 
+const localeToBcp47 = { ua: "uk", en: "en", ro: "ro", ru: "ru" };
+
 export const metadata = {
   metadataBase: new URL("https://scviking2021.com"),
   verification: {
@@ -24,12 +27,17 @@ export const metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   const structuredData = getStructuredData();
+  const headersList = await headers();
+  const locale = headersList.get("x-locale") || "ua";
+  const lang = localeToBcp47[locale] || "uk";
 
   return (
-    <html lang="uk" className={`${montserrat.variable} ${bebasNeue.variable}`}>
+    <html lang={lang} className={`${montserrat.variable} ${bebasNeue.variable}`}>
       <head>
+        <link rel="preload" as="image" href="/sc-viking-emblem-transparent.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/hero-bg.webp" type="image/webp" fetchPriority="high" />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-0WMTCBF9MN"

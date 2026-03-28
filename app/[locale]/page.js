@@ -72,7 +72,10 @@ export default function HomePage() {
         {/* 3. COACH — photo + expanded bio */}
         <section id="coach" className="section section-dark section-coach">
           <div className="coach-bg-photo" aria-hidden="true">
-            <img src="/images/arena.jpg" alt="SC Viking indoor training arena" loading="lazy" decoding="async" />
+            <picture>
+              <source srcSet="/images/arena.webp" type="image/webp" />
+              <img src="/images/arena.jpg" alt="SC Viking indoor training arena" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div className="shell coach-profile">
             <p className="eyebrow">{copy.coach.eyebrow}</p>
@@ -152,7 +155,10 @@ export default function HomePage() {
             </div>
             <div className="location-layout">
               <div className="location-photo-card">
-                <img src="/images/arena.jpg" alt="Training arena" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcSet="/images/arena.webp" type="image/webp" />
+                  <img src="/images/arena.jpg" alt="Training arena" loading="lazy" decoding="async" />
+                </picture>
                 <span className="location-photo-label">{copy.location.photoLabel}</span>
               </div>
               <div className="location-text-col">
