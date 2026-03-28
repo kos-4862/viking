@@ -20,7 +20,7 @@ export default function GalleryPage() {
             <p className="eyebrow">{copy.gallery.eyebrow}</p>
             <h2>{copy.gallery.title}</h2>
           </div>
-          <PhotoGallery photos={allPhotos} />
+          <PhotoGallery photos={allPhotos} paginated />
         </div>
       </main>
 

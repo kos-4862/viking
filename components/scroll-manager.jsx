@@ -37,7 +37,7 @@ export function ScrollManager() {
       }
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     } else if (window.location.hash) {
-      requestAnimationFrame(() => scrollToHash(window.location.hash, "auto"));
+      setTimeout(() => scrollToHash(window.location.hash, "auto"), 50);
     }
 
     function handleDocumentClick(event) {

@@ -1,5 +1,9 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useLocale } from "@/components/locale-provider";
+import { getSiteCopy } from "@/lib/site-copy";
+
+const BATCH_SIZE = 14;
 
 const mainPhotos = [
   { src: "/images/gallery/main-01.webp", fallback: "/images/gallery/main-01.jpg", alt: "Player kicking the ball" },
@@ -23,23 +27,27 @@ const allPhotos = Array.from({ length: 42 }, (_, i) => {
 
 export { mainPhotos, allPhotos };
 
-export function PhotoGallery({ photos = mainPhotos }) {
+export function PhotoGallery({ photos = mainPhotos, paginated = false }) {
+  const [visibleCount, setVisibleCount] = useState(paginated ? BATCH_SIZE : photos.length);
   const [active, setActive] = useState(null);
   const dialogRef = useRef(null);
+  const { locale } = useLocale();
+  const copy = getSiteCopy(locale);
+
+  const visiblePhotos = photos.slice(0, visibleCount);
+  const hasMore = visibleCount < photos.length;
 
   const showPrev = useCallback(() => {
     setActive((i) => (i === 0 ? photos.length - 1 : i - 1));
-  }, []);
+  }, [photos.length]);
 
   const showNext = useCallback(() => {
     setActive((i) => (i === photos.length - 1 ? 0 : i + 1));
-  }, []);
+  }, [photos.length]);
 
-  // Keyboard navigation + focus trap
   useEffect(() => {
     if (active === null) return;
 
-    // Focus the dialog when it opens
     dialogRef.current?.focus();
 
     const handleKey = (e) => {
@@ -50,7 +58,6 @@ export function PhotoGallery({ photos = mainPhotos }) {
       } else if (e.key === "ArrowRight") {
         showNext();
       } else if (e.key === "Tab") {
-        // Focus trap: keep Tab inside the dialog
         const dialog = dialogRef.current;
         if (!dialog) return;
         const focusable = Array.from(
@@ -82,10 +89,14 @@ export function PhotoGallery({ photos = mainPhotos }) {
     return () => window.removeEventListener("keydown", handleKey);
   }, [active, showPrev, showNext]);
 
+  function loadMore() {
+    setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, photos.length));
+  }
+
   return (
     <>
       <div className="gallery-scroll">
-        {photos.map((photo, i) => (
+        {visiblePhotos.map((photo, i) => (
           <button
             key={photo.src}
             className="gallery-item"
@@ -99,6 +110,14 @@ export function PhotoGallery({ photos = mainPhotos }) {
           </button>
         ))}
       </div>
+
+      {paginated && hasMore && (
+        <div className="gallery-load-more">
+          <button className="button button-secondary" onClick={loadMore}>
+            {copy.gallery?.loadMore || "Show more"}
+          </button>
+        </div>
+      )}
 
       {active !== null && (
         <div
