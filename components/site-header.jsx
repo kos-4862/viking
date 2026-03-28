@@ -145,7 +145,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <a className="brand" href="/" aria-label="SC Viking home" onClick={closeMenu}>
+        <a className="brand" href={`/${locale}`} aria-label="SC Viking home" onClick={closeMenu}>
           <img src="/sc-viking-emblem-transparent.png" alt="SC Viking emblem" />
           <div className="brand-copy">
             <strong>SC Viking</strong>
@@ -170,13 +170,13 @@ export function SiteHeader() {
             <LanguageRow locale={locale} setLocale={setLocale} />
           </div>
           {copy.header.navItems.map((item) => (
-            <a key={item.href} href={`/${item.href}`} onClick={closeMenu}>
+            <a key={item.href} href={`/${locale}/${item.href}`} onClick={closeMenu}>
               {item.label}
             </a>
           ))}
 
           <div className="mobile-nav-panel">
-            <a className="mobile-nav-link" href="/#contact" onClick={closeMenu}>
+            <a className="mobile-nav-link" href={`/${locale}/#contact`} onClick={closeMenu}>
               {copy.header.mobileCtaLabel}
             </a>
           </div>

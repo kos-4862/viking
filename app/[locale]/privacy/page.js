@@ -136,7 +136,7 @@ export default function PrivacyPage() {
       <SiteHeader />
       <main className="privacy-page">
         <div className="shell">
-          <a href="/" className="gallery-back">
+          <a href={`/${locale}`} className="gallery-back">
             ← {locale === "en" ? "Home" : locale === "ro" ? "Acasă" : locale === "ru" ? "На главную" : "На головну"}
           </a>
           <h1>{t.title}</h1>

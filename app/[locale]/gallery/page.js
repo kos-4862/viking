@@ -15,7 +15,7 @@ export default function GalleryPage() {
       <SiteHeader />
       <main className="gallery-page">
         <div className="shell">
-          <a href="/" className="gallery-back">← {copy.gallery.backLabel || "На головну"}</a>
+          <a href={`/${locale}`} className="gallery-back">← {copy.gallery.backLabel || "На головну"}</a>
           <div className="section-heading">
             <p className="eyebrow">{copy.gallery.eyebrow}</p>
             <h2>{copy.gallery.title}</h2>

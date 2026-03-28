@@ -116,7 +116,7 @@ export default function HomePage() {
             </div>
             <PhotoGallery />
             <p className="gallery-more">
-              <a href="/gallery">{copy.gallery.viewAll || "Дивитись всю галерею"} →</a>
+              <a href={`/${locale}/gallery`}>{copy.gallery.viewAll || "Дивитись всю галерею"} →</a>
             </p>
           </div>
         </section>

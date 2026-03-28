@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+const locales = ["ua", "en", "ro", "ru"];
+const defaultLocale = "ua";
+
 export function middleware(request) {
   const host = request.headers.get("host") || "";
 
@@ -10,5 +13,22 @@ export function middleware(request) {
     return NextResponse.redirect(url, 301);
   }
 
+  const { pathname } = request.nextUrl;
+
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (!pathnameHasLocale) {
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}${pathname}`, request.url),
+      301
+    );
+  }
+
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: ["/((?!_next|api|icons|images|Viking|.*\\..*).*)"],
+};

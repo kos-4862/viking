@@ -1,42 +1,40 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from "react";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { supportedLocales } from "@/lib/site-copy";
 
-const DEFAULT_LOCALE = "uk";
-const STORAGE_KEY = "sc-viking-locale";
-
 const LocaleContext = createContext({
-  locale: DEFAULT_LOCALE,
+  locale: "ua",
   setLocale: () => {}
 });
 
-function isSupportedLocale(locale) {
-  return supportedLocales.some((item) => item.code === locale);
+function isSupportedLocale(code) {
+  return supportedLocales.some((item) => item.code === code);
 }
 
-export function LocaleProvider({ children }) {
-  const [locale, setLocaleState] = useState(DEFAULT_LOCALE);
-
-  useEffect(() => {
-    const storedLocale = window.localStorage.getItem(STORAGE_KEY);
-    if (storedLocale && isSupportedLocale(storedLocale)) {
-      setLocaleState(storedLocale);
-    }
-  }, []);
+export function LocaleProvider({ children, initialLocale = "ua" }) {
+  const params = useParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const locale = (params.locale && isSupportedLocale(params.locale)) ? params.locale : initialLocale;
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    window.localStorage.setItem(STORAGE_KEY, locale);
   }, [locale]);
 
   function setLocale(nextLocale) {
-    if (isSupportedLocale(nextLocale)) {
-      setLocaleState(nextLocale);
-    }
+    if (!isSupportedLocale(nextLocale)) return;
+    const segments = pathname.split("/");
+    segments[1] = nextLocale;
+    router.push(segments.join("/"));
   }
 
-  return <LocaleContext.Provider value={{ locale, setLocale }}>{children}</LocaleContext.Provider>;
+  return (
+    <LocaleContext.Provider value={{ locale, setLocale }}>
+      {children}
+    </LocaleContext.Provider>
+  );
 }
 
 export function useLocale() {
