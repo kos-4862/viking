@@ -21,7 +21,7 @@ const highlights = [
   { id: "Ns5ek9PI9JY", title: "Outdoor Match — Drone View" },
   { id: "k-e4fuMrmuo", title: "Indoor Match vs Blue Team" },
   { id: "ZF8oyTL2RcA", title: "Match Under Coach's Eye" },
-  { id: "z_sypUed8jQ", title: "Training with Coach" },
+  { id: "z_sypUed8jQ", title: "Top Corner Goal!" },
   { id: "HGJVPO-lGwg", title: "Indoor Game Day" },
   { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
   { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
