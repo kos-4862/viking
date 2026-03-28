@@ -10,11 +10,11 @@ const mainPhotos = [
   { src: "/images/gallery/main-02.webp", fallback: "/images/gallery/main-02.jpg", alt: "Friends on the field" },
   { src: "/images/gallery/main-03.webp", fallback: "/images/gallery/main-03.jpg", alt: "Team celebrating with Ukrainian flag and medals" },
   { src: "/images/gallery/main-04.webp", fallback: "/images/gallery/main-04.jpg", alt: "Parents with Viking flag" },
-  { src: "/images/gallery/main-05.webp", fallback: "/images/gallery/main-05.jpg", alt: "Team photo at the goal" },
+  { src: "/images/gallery/main-09.webp", fallback: "/images/gallery/main-09.jpg", alt: "Players collage with club emblem" },
   { src: "/images/gallery/main-06.webp", fallback: "/images/gallery/main-06.jpg", alt: "Match in the arena" },
   { src: "/images/gallery/main-07.webp", fallback: "/images/gallery/main-07.jpg", alt: "Team in the arena" },
   { src: "/images/gallery/main-08.webp", fallback: "/images/gallery/main-08.jpg", alt: "Winter team photo" },
-  { src: "/images/gallery/main-09.webp", fallback: "/images/gallery/main-09.jpg", alt: "Players collage with club emblem" },
+  { src: "/images/gallery/main-05.webp", fallback: "/images/gallery/main-05.jpg", alt: "Team photo at the goal" },
 ];
 
 const allPhotos = Array.from({ length: 42 }, (_, i) => {
