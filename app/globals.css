@@ -1681,26 +1681,26 @@ input {
 }
 
 .messenger-btn--wa {
-  background: #1db954;
-  border: 1px solid #1db954;
+  background: #0d7a36;
+  border: 1px solid #0d7a36;
   color: #fff;
 }
 
 .messenger-btn--wa:hover {
-  background: #1ed760;
-  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.35);
+  background: #0f9040;
+  box-shadow: 0 6px 20px rgba(13, 122, 54, 0.35);
   transform: translateY(-2px);
 }
 
 .messenger-btn--tg {
-  background: #229ed9;
-  border: 1px solid #229ed9;
+  background: #166fa3;
+  border: 1px solid #166fa3;
   color: #fff;
 }
 
 .messenger-btn--tg:hover {
-  background: #33b5e5;
-  box-shadow: 0 6px 20px rgba(34, 158, 217, 0.35);
+  background: #1a82bf;
+  box-shadow: 0 6px 20px rgba(22, 111, 163, 0.35);
   transform: translateY(-2px);
 }
 

@@ -48,7 +48,8 @@ export async function generateMetadata({ params }) {
 
   const languages = {};
   supportedLocales.forEach((l) => {
-    languages[l.code] = `/${l.code}`;
+    const hreflang = l.code === "ua" ? "uk" : l.code;
+    languages[hreflang] = `/${l.code}`;
   });
 
   return {

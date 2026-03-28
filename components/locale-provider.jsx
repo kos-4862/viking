@@ -20,7 +20,7 @@ export function LocaleProvider({ children, initialLocale = "ua" }) {
   const locale = (params.locale && isSupportedLocale(params.locale)) ? params.locale : initialLocale;
 
   useEffect(() => {
-    document.documentElement.lang = locale;
+    document.documentElement.lang = locale === "ua" ? "uk" : locale;
   }, [locale]);
 
   function setLocale(nextLocale) {

@@ -22,7 +22,10 @@ export default function HomePage() {
         {/* 1. HERO — photo background, centered */}
         <section className="hero">
           <div className="hero-bg-photo" aria-hidden="true">
-            <img src="/images/hero-bg.jpg" alt="SC Viking children's football training" fetchPriority="high" decoding="async" />
+            <picture>
+              <source srcSet="/images/hero-bg.webp" type="image/webp" />
+              <img src="/images/hero-bg.jpg" alt="SC Viking children's football training" fetchPriority="high" decoding="async" />
+            </picture>
           </div>
           <div className="hero-backdrop" aria-hidden="true" />
           <div className="shell hero-content">
@@ -41,7 +44,10 @@ export default function HomePage() {
         <section id="about" className="section section-about">
           <div className="about-layout">
             <div className="about-photo-col">
-              <img src="/images/about-team.jpg" alt="SC Viking team" loading="lazy" decoding="async" />
+              <picture>
+                <source srcSet="/images/about-team.webp" type="image/webp" />
+                <img src="/images/about-team.jpg" alt="SC Viking team" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div className="about-text-col">
               <div className="about-content">
