@@ -5,15 +5,25 @@ import { VideoTile } from "@/components/video-tile";
 import { ShortsModal } from "@/components/shorts-modal";
 
 const shorts = [
-  { id: "EqWP39F4X9g", title: "SC Viking training" },
-  { id: "7fR598yhHEE", title: "SC Viking match" },
-  { id: "H866o3xaaD8", title: "SC Viking goal" },
+  { id: "EqWP39F4X9g", title: "Agility Training Drill" },
+  { id: "7fR598yhHEE", title: "Team Spirit" },
+  { id: "H866o3xaaD8", title: "Tournament Day" },
+  { id: "JO6YakcAQzU", title: "Tournament Goal Moment" },
+  { id: "lWHSUdoaFnM", title: "Tournament Match Action" },
+  { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
+  { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
+  { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
 ];
 
 const highlights = [
-  { id: "b7dCTjfvfmE", title: "SC Viking highlights" },
-  { id: "HGJVPO-lGwg", title: "SC Viking game day" },
-  { id: "z_sypUed8jQ", title: "SC Viking moments" },
+  { id: "b7dCTjfvfmE", title: "Outdoor Match Highlights" },
+  { id: "aba3jME0VTU", title: "Match vs Purple Team" },
+  { id: "Ns5ek9PI9JY", title: "Outdoor Match — Drone View" },
+  { id: "k-e4fuMrmuo", title: "Indoor Match vs Blue Team" },
+  { id: "ZF8oyTL2RcA", title: "Match Under Coach's Eye" },
+  { id: "R_Z0DxhNDxE", title: "Fair Play on the Pitch" },
+  { id: "z_sypUed8jQ", title: "Training with Coach" },
+  { id: "HGJVPO-lGwg", title: "Indoor Game Day" },
 ];
 
 export function VideoCarousel() {

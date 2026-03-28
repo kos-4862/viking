@@ -139,7 +139,7 @@ export default function HomePage() {
             </div>
             <VideoCarousel />
             <p className="video-more">
-              <a href="https://youtube.com/@vikingsk-2021" target="_blank" rel="noopener noreferrer">
+              <a href="https://youtube.com/@scviking-2021" target="_blank" rel="noopener noreferrer">
                 {copy.video.youtubeLabel} →
               </a>
             </p>

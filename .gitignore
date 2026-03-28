@@ -9,5 +9,9 @@ npm-debug.log*
 .dev.vars
 .env.local
 
+# YouTube API credentials
+config/client_secret.json
+config/token.json
+
 # Heavy media — moved to media-archive/, serve via CDN later
 media-archive/
