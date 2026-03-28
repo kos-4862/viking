@@ -150,7 +150,7 @@ def upload_one(yt, filepath, meta):
         },
         "status": {
             "privacyStatus": "public",
-            "selfDeclaredMadeForKids": True,
+            "selfDeclaredMadeForKids": False,
         },
     }
 

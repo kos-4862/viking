@@ -38,7 +38,7 @@ WIDTH = 1080
 HEIGHT = 1920  # 9:16 for Shorts/Reels
 FPS = 30
 INTRO_DURATION = 3
-OUTRO_DURATION = 4
+OUTRO_DURATION = 8  # 8s for YouTube end screen elements (min 5s needed)
 
 # Colors (SC Viking brand)
 BG_COLOR = "0x1a1a2e"
@@ -147,29 +147,54 @@ def generate_intro(output, title="SC VIKING", subtitle="", duration=INTRO_DURATI
 # ── Outro Generation ─────────────────────────────────────────────────────────
 
 def generate_outro(output, duration=OUTRO_DURATION):
-    """Generate branded outro: logo, subscribe text, website."""
+    """Generate branded outro optimized for YouTube end screen elements.
+
+    Layout (vertical 1080x1920):
+      Top area: Logo + SUBSCRIBE + website (our branding)
+      Bottom area: EMPTY — reserved for YouTube end screen elements
+        (subscribe button, next video thumbnail)
+
+    Layout (horizontal 1920x1080):
+      Left side: Logo + SUBSCRIBE + website
+      Right side: EMPTY — reserved for YouTube end screen elements
+    """
     text_filter = (
         f"color=c=#{BG_COLOR[2:]}:s={WIDTH}x{HEIGHT}:d={duration},"
         f"format=yuv420p[bg];"
-        f"[1:v]scale=200:200[logo];"
-        f"[bg][logo]overlay=(W-w)/2:(H-h)/2-250:enable='gte(t,0.3)',"
+        f"[1:v]scale=160:160[logo];"
+        # Logo at top center
+        f"[bg][logo]overlay=(W-w)/2:200:enable='gte(t,0.3)',"
         f"fade=in:st=0:d=0.5,"
         f"fade=out:st={duration-0.5}:d=0.5,"
-        # Subscribe
-        f"drawtext=text='SUBSCRIBE':"
-        f"fontsize=64:fontcolor=#{ACCENT_COLOR[2:]}:"
-        f"x=(w-text_w)/2:y=(h/2):"
+        # SC VIKING
+        f"drawtext=text='SC VIKING':"
+        f"fontsize=56:fontcolor=white:"
+        f"x=(w-text_w)/2:y=400:"
         f"font='DejaVu Sans':enable='gte(t,0.5)',"
+        # Red line
+        f"drawbox=x=(w/2-80):y=470:w=160:h=3:"
+        f"color=#{ACCENT_COLOR[2:]}:t=fill:enable='gte(t,0.5)',"
+        # SUBSCRIBE
+        f"drawtext=text='SUBSCRIBE':"
+        f"fontsize=48:fontcolor=#{ACCENT_COLOR[2:]}:"
+        f"x=(w-text_w)/2:y=500:"
+        f"font='DejaVu Sans':enable='gte(t,0.8)',"
         # Website
         f"drawtext=text='scviking2021.com':"
-        f"fontsize=36:fontcolor=white@0.8:"
-        f"x=(w-text_w)/2:y=(h/2)+100:"
-        f"font='DejaVu Sans':enable='gte(t,0.8)',"
-        # Email
-        f"drawtext=text='scvikingur@gmail.com':"
-        f"fontsize=28:fontcolor=white@0.5:"
-        f"x=(w-text_w)/2:y=(h/2)+160:"
-        f"font='DejaVu Sans':enable='gte(t,1.0)'"
+        f"fontsize=28:fontcolor=white@0.6:"
+        f"x=(w-text_w)/2:y=570:"
+        f"font='DejaVu Sans':enable='gte(t,1.0)',"
+        # "More videos" hint pointing down
+        f"drawtext=text='MORE VIDEOS':"
+        f"fontsize=24:fontcolor=white@0.3:"
+        f"x=(w-text_w)/2:y=680:"
+        f"font='DejaVu Sans':enable='gte(t,1.5)',"
+        # Down arrow hint
+        f"drawtext=text='▼':"
+        f"fontsize=32:fontcolor=white@0.3:"
+        f"x=(w-text_w)/2:y=720:"
+        f"font='DejaVu Sans':enable='gte(t,1.5)'"
+        # Bottom half (y=960-1920) stays EMPTY for YouTube end screen elements
     )
 
     return run_ffmpeg([

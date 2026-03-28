@@ -98,7 +98,7 @@ def upload_video(
         },
         "status": {
             "privacyStatus": privacy,  # public, unlisted, private
-            "selfDeclaredMadeForKids": True,
+            "selfDeclaredMadeForKids": False,
         },
     }
 
