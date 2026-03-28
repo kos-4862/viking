@@ -98,6 +98,7 @@ input {
 .section {
   padding: 96px 0;
   overflow: hidden;
+  scroll-margin-top: 100px;
 }
 
 .section-light {

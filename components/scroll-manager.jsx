@@ -18,8 +18,7 @@ function scrollToHash(hash, behavior = "smooth") {
     return;
   }
 
-  const top = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
-  window.scrollTo({ top: Math.max(0, top), left: 0, behavior });
+  target.scrollIntoView({ behavior, block: "start" });
 }
 
 export function ScrollManager() {
@@ -41,26 +40,35 @@ export function ScrollManager() {
     }
 
     function handleDocumentClick(event) {
-      const anchor = event.target.closest('a[href^="#"]');
-      if (!anchor) {
-        return;
-      }
+      const anchor = event.target.closest("a[href]");
+      if (!anchor) return;
 
       const href = anchor.getAttribute("href");
-      if (!href) {
+      if (!href) return;
+
+      // Handle pure hash links (#about)
+      if (href.startsWith("#")) {
+        event.preventDefault();
+        if (href === "#top") {
+          window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+          return;
+        }
+        scrollToHash(href, "smooth");
+        window.history.pushState(null, "", href);
         return;
       }
 
-      event.preventDefault();
-
-      if (href === "#top") {
-        window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        return;
+      // Handle same-page path+hash links (/ua/#about)
+      const hashIdx = href.indexOf("#");
+      if (hashIdx === -1) return;
+      const path = href.slice(0, hashIdx);
+      const hash = href.slice(hashIdx);
+      if (path === window.location.pathname || path === window.location.pathname + "/") {
+        event.preventDefault();
+        scrollToHash(hash, "smooth");
+        window.history.pushState(null, "", href);
       }
-
-      scrollToHash(href, "smooth");
-      window.history.pushState(null, "", href);
     }
 
     function handleHashChange() {
