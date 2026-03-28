@@ -1,57 +1,120 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { VideoTile } from "@/components/video-tile";
+import { ShortsModal } from "@/components/shorts-modal";
 
-const videos = [
-  { id: "EqWP39F4X9g", title: "SC Viking training", short: true },
-  { id: "7fR598yhHEE", title: "SC Viking match", short: true },
-  { id: "H866o3xaaD8", title: "SC Viking goal", short: true },
-  { id: "b7dCTjfvfmE", title: "SC Viking highlights", short: false },
-  { id: "HGJVPO-lGwg", title: "SC Viking game day", short: false },
-  { id: "z_sypUed8jQ", title: "SC Viking moments", short: false },
+const shorts = [
+  { id: "EqWP39F4X9g", title: "SC Viking training" },
+  { id: "7fR598yhHEE", title: "SC Viking match" },
+  { id: "H866o3xaaD8", title: "SC Viking goal" },
+];
+
+const highlights = [
+  { id: "b7dCTjfvfmE", title: "SC Viking highlights" },
+  { id: "HGJVPO-lGwg", title: "SC Viking game day" },
+  { id: "z_sypUed8jQ", title: "SC Viking moments" },
 ];
 
 export function VideoCarousel() {
-  const trackRef = useRef(null);
+  const [featuredIdx, setFeaturedIdx] = useState(0);
+  const [modalIdx, setModalIdx] = useState(null);
+  const shortsRef = useRef(null);
 
-  const scroll = (dir) => {
-    const track = trackRef.current;
+  const featured = highlights[featuredIdx];
+
+  const scrollShorts = (dir) => {
+    const track = shortsRef.current;
     if (!track) return;
-    const card = track.querySelector(".video-strip__item");
-    const distance = card ? card.offsetWidth + 16 : 260;
+    const card = track.querySelector(".shorts-strip__item");
+    const distance = card ? card.offsetWidth + 12 : 160;
     track.scrollBy({ left: dir * distance, behavior: "smooth" });
   };
 
   return (
-    <div className="video-strip-wrapper">
-      <button
-        className="video-strip__arrow video-strip__arrow--left"
-        onClick={() => scroll(-1)}
-        aria-label="Scroll left"
-      >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      </button>
+    <div className="video-showcase">
+      {/* Featured highlight — big 16:9 player */}
+      <div className="video-showcase__featured">
+        <VideoTile videoId={featured.id} isShort={false} title={featured.title} />
+      </div>
 
-      <div className="video-strip" ref={trackRef}>
-        {videos.map((v) => (
-          <div key={v.id} className={`video-strip__item${v.short ? " video-strip__item--short" : ""}`}>
-            <VideoTile videoId={v.id} isShort={v.short} title={v.title} />
-          </div>
+      {/* Highlight thumbnails */}
+      <div className="video-showcase__thumbs">
+        {highlights.map((h, i) => (
+          <button
+            key={h.id}
+            className={`video-showcase__thumb${i === featuredIdx ? " video-showcase__thumb--active" : ""}`}
+            onClick={() => setFeaturedIdx(i)}
+            aria-label={h.title}
+          >
+            <img
+              src={`https://i.ytimg.com/vi/${h.id}/mqdefault.jpg`}
+              alt={h.title}
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="video-showcase__thumb-title">{h.title.replace("SC Viking ", "")}</span>
+          </button>
         ))}
       </div>
 
-      <button
-        className="video-strip__arrow video-strip__arrow--right"
-        onClick={() => scroll(1)}
-        aria-label="Scroll right"
-      >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="9 6 15 12 9 18" />
-        </svg>
-      </button>
+      {/* Shorts strip */}
+      <div className="shorts-section">
+        <p className="shorts-section__label">Shorts</p>
+        <div className="shorts-strip-wrapper">
+          <button
+            className="shorts-strip__arrow shorts-strip__arrow--left"
+            onClick={() => scrollShorts(-1)}
+            aria-label="Scroll left"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <div className="shorts-strip" ref={shortsRef}>
+            {shorts.map((v, i) => (
+              <div key={v.id} className="shorts-strip__item">
+                <button
+                  className="video-tile video-tile--short"
+                  onClick={() => setModalIdx(i)}
+                  aria-label={v.title}
+                >
+                  <img
+                    src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                    alt={v.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="video-play-btn" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="shorts-strip__arrow shorts-strip__arrow--right"
+            onClick={() => scrollShorts(1)}
+            aria-label="Scroll right"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 6 15 12 9 18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Shorts modal */}
+      {modalIdx !== null && (
+        <ShortsModal
+          shorts={shorts}
+          activeIndex={modalIdx}
+          onClose={() => setModalIdx(null)}
+          onChangeIndex={setModalIdx}
+        />
+      )}
     </div>
   );
 }
