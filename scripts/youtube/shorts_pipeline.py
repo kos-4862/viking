@@ -120,7 +120,7 @@ def generate_shorts_intro(output, title="SC VIKING", duration=INTRO_DURATION):
         f"drawbox=x=(w/2-60):y=(h/2)+65:w=120:h=3:"
         f"color=0x{ACCENT_COLOR[2:]}:t=fill:enable='gte(t,0.2)'",
         "-t", str(duration),
-        "-c:v", "libx264", "-preset", "fast", "-crf", "23",
+        "-c:v", "libx264", "-preset", "fast", "-crf", "28",
         "-pix_fmt", "yuv420p",
         str(output),
     ], "Generating shorts intro")
@@ -140,70 +140,101 @@ def generate_shorts_outro(output, duration=OUTRO_DURATION):
         f"drawtext=text='scviking2021.com':fontsize=22:fontcolor=white@0.5:"
         f"x=(w-text_w)/2:y=(h/2)+85:font='DejaVu Sans'",
         "-t", str(duration),
-        "-c:v", "libx264", "-preset", "fast", "-crf", "23",
+        "-c:v", "libx264", "-preset", "fast", "-crf", "28",
         "-pix_fmt", "yuv420p",
         str(output),
     ], "Generating shorts outro")
 
 
 def convert_to_vertical(input_path, output, title=""):
-    """Convert horizontal video to vertical 9:16 with blur background + branding."""
+    """Convert any video to vertical 9:16 with full SC Viking branding.
+
+    Branding elements:
+    - Red accent lines top + bottom (club color)
+    - Logo + SC VIKING top-left
+    - Title bar at bottom with gradient
+    - Website URL
+    - For horizontal: blur background fill
+    """
     w, h = get_dimensions(input_path)
     is_vertical = h > w if w > 0 and h > 0 else False
 
-    if is_vertical:
-        # Already vertical — just add branding overlay
-        vf = (
-            f"scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=decrease,"
-            f"pad={WIDTH}:{HEIGHT}:-1:-1:color=0x{BG_COLOR[2:]}"
+    # Common branding overlay (applied to both orientations)
+    brand_overlay = (
+        # Red accent line at very top
+        f"drawbox=x=0:y=0:w=1080:h=4:color=0x{ACCENT_COLOR[2:]}:t=fill,"
+        # Red accent line at very bottom
+        f"drawbox=x=0:y=1916:w=1080:h=4:color=0x{ACCENT_COLOR[2:]}:t=fill,"
+        # Red thin side lines
+        f"drawbox=x=0:y=0:w=3:h=1920:color=0x{ACCENT_COLOR[2:]}@0.4:t=fill,"
+        f"drawbox=x=1077:y=0:w=3:h=1920:color=0x{ACCENT_COLOR[2:]}@0.4:t=fill,"
+    )
+
+    # Title bar at bottom
+    title_bar = (
+        # Dark gradient bar at bottom
+        f"drawbox=x=0:y=1750:w=1080:h=170:color=black@0.6:t=fill,"
+        # Red accent line above title bar
+        f"drawbox=x=0:y=1750:w=1080:h=3:color=0x{ACCENT_COLOR[2:]}@0.8:t=fill,"
+    )
+
+    if title:
+        title_bar += (
+            f"drawtext=text='{title}':fontsize=36:fontcolor=white:"
+            f"x=(w-text_w)/2:y=1790:font='DejaVu Sans':borderw=2:bordercolor=black@0.3,"
         )
+
+    title_bar += (
+        f"drawtext=text='scviking2021.com':fontsize=18:fontcolor=white@0.5:"
+        f"x=(w-text_w)/2:y=1845:font='DejaVu Sans',"
+        # SC VIKING badge top-left with background
+        f"drawbox=x=10:y=25:w=195:h=50:color=black@0.5:t=fill,"
+        f"drawbox=x=10:y=25:w=195:h=3:color=0x{ACCENT_COLOR[2:]}:t=fill"
+    )
+
+    # Video encoding params — optimized for Shorts (small file size)
+    encode_params = [
+        "-c:v", "libx264", "-preset", "fast", "-crf", "28",
+        "-maxrate", "4M", "-bufsize", "8M",
+        "-c:a", "aac", "-b:a", "96k",
+        "-pix_fmt", "yuv420p", "-r", "30",
+    ]
+
+    if is_vertical:
         return run_ffmpeg([
             "-i", str(input_path),
             "-i", str(LOGO_PATH),
             "-filter_complex",
-            f"[0:v]{vf}[scaled];"
-            f"[1:v]scale=50:50[logo];"
-            f"[scaled][logo]overlay=15:30,"
-            f"drawtext=text='SC VIKING':fontsize=22:fontcolor=white@0.8:"
-            f"x=75:y=42:font='DejaVu Sans'",
-            "-c:v", "libx264", "-preset", "fast", "-crf", "23",
-            "-c:a", "aac", "-b:a", "128k",
-            "-pix_fmt", "yuv420p", "-r", "30",
-            str(output),
-        ], "Processing vertical video")
+            f"[0:v]scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=decrease,"
+            f"pad={WIDTH}:{HEIGHT}:-1:-1:color=0x{BG_COLOR[2:]}[scaled];"
+            f"[1:v]scale=40:40[logo];"
+            f"[scaled][logo]overlay=18:32,"
+            f"{brand_overlay}"
+            f"{title_bar},"
+            f"drawtext=text='SC VIKING':fontsize=22:fontcolor=white@0.9:"
+            f"x=68:y=38:font='DejaVu Sans'",
+        ] + encode_params + [str(output)],
+        "Processing vertical video")
     else:
-        # Horizontal → blur background + center + branding
-        title_filter = ""
-        if title:
-            title_filter = (
-                f",drawbox=x=0:y=1780:w=1080:h=140:color=black@0.4:t=fill"
-                f",drawtext=text='{title}':fontsize=30:fontcolor=white:"
-                f"x=(w-text_w)/2:y=1810:font='DejaVu Sans'"
-                f",drawtext=text='scviking2021.com':fontsize=18:fontcolor=white@0.4:"
-                f"x=(w-text_w)/2:y=1855:font='DejaVu Sans'"
-            )
-
         return run_ffmpeg([
             "-i", str(input_path),
             "-i", str(LOGO_PATH),
             "-filter_complex",
             # Blur background
             f"[0:v]scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=increase,"
-            f"crop={WIDTH}:{HEIGHT},gblur=sigma=25,eq=brightness=-0.2[blurbg];"
+            f"crop={WIDTH}:{HEIGHT},gblur=sigma=25,eq=brightness=-0.15[blurbg];"
             # Main video centered
             f"[0:v]scale={WIDTH}:-1:force_original_aspect_ratio=decrease[main];"
             f"[blurbg][main]overlay=(W-w)/2:(H-h)/2[composed];"
             # Logo
-            f"[1:v]scale=50:50[logo];"
-            f"[composed][logo]overlay=15:30,"
-            f"drawtext=text='SC VIKING':fontsize=22:fontcolor=white@0.8:"
-            f"x=75:y=42:font='DejaVu Sans'"
-            f"{title_filter}",
-            "-c:v", "libx264", "-preset", "fast", "-crf", "23",
-            "-c:a", "aac", "-b:a", "128k",
-            "-pix_fmt", "yuv420p", "-r", "30",
-            str(output),
-        ], "Converting horizontal → vertical with blur")
+            f"[1:v]scale=40:40[logo];"
+            f"[composed][logo]overlay=18:32,"
+            f"{brand_overlay}"
+            f"{title_bar},"
+            f"drawtext=text='SC VIKING':fontsize=22:fontcolor=white@0.9:"
+            f"x=68:y=38:font='DejaVu Sans'",
+        ] + encode_params + [str(output)],
+        "Converting horizontal → vertical with blur")
 
 
 def build_short(
@@ -273,7 +304,7 @@ def build_short(
         concat_out = tmpdir / "concat.mp4"
         run_ffmpeg([
             "-f", "concat", "-safe", "0", "-i", str(concat_list),
-            "-c:v", "libx264", "-preset", "fast", "-crf", "23",
+            "-c:v", "libx264", "-preset", "fast", "-crf", "28",
             "-c:a", "aac", "-b:a", "128k",
             "-pix_fmt", "yuv420p",
             str(concat_out),
