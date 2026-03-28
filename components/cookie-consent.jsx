@@ -6,10 +6,10 @@ import { useLocale } from "@/components/locale-provider";
 const GA_ID = "G-0WMTCBF9MN";
 
 const copy = {
-  uk: { text: "Ми використовуємо cookies для аналітики сайту.", accept: "Прийняти", decline: "Відхилити" },
-  en: { text: "We use cookies for site analytics.", accept: "Accept", decline: "Decline" },
-  ro: { text: "Folosim cookies pentru analiza site-ului.", accept: "Accept", decline: "Refuz" },
-  ru: { text: "Мы используем cookies для аналитики сайта.", accept: "Принять", decline: "Отклонить" },
+  uk: { text: "Ми використовуємо cookies для аналітики сайту.", accept: "Прийняти", decline: "Відхилити", privacy: "Політика конфіденційності" },
+  en: { text: "We use cookies for site analytics.", accept: "Accept", decline: "Decline", privacy: "Privacy Policy" },
+  ro: { text: "Folosim cookies pentru analiza site-ului.", accept: "Accept", decline: "Refuz", privacy: "Politica de confidențialitate" },
+  ru: { text: "Мы используем cookies для аналитики сайта.", accept: "Принять", decline: "Отклонить", privacy: "Политика конфиденциальности" },
 };
 
 export function CookieConsent() {
@@ -49,7 +49,7 @@ export function CookieConsent() {
 
   return (
     <div className="cookie-banner">
-      <p>{t.text}</p>
+      <p>{t.text} <a href="/privacy" className="cookie-privacy-link">{t.privacy}</a></p>
       <div className="cookie-buttons">
         <button onClick={handleDecline} className="cookie-btn cookie-btn--decline">{t.decline}</button>
         <button onClick={handleAccept} className="cookie-btn cookie-btn--accept">{t.accept}</button>

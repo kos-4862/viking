@@ -2350,6 +2350,42 @@ button:focus-visible {
 }
 
 /* ============================================================
+   PRIVACY PAGE
+   ============================================================ */
+
+.privacy-page {
+  padding: 6rem 0 4rem;
+  color: var(--text);
+}
+
+.privacy-page h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  margin: 1.5rem 0 0.25rem;
+}
+
+.privacy-updated {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+.privacy-section {
+  margin-bottom: 1.5rem;
+}
+
+.privacy-section h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.privacy-section p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ============================================================
    COOKIE CONSENT BANNER
    ============================================================ */
 
@@ -2403,6 +2439,12 @@ button:focus-visible {
   background: transparent;
   color: var(--muted);
   border: 1px solid var(--line);
+}
+
+.cookie-privacy-link {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 @media (max-width: 600px) {
