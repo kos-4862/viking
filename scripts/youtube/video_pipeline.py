@@ -312,20 +312,60 @@ def concat_videos(parts, output):
 
 # ── Find Music ───────────────────────────────────────────────────────────────
 
+# Video type → music style mapping
+TYPE_TO_MUSIC = {
+    "match": "epic",
+    "goal": "epic",
+    "highlight": "epic",
+    "training": "training",
+    "drill": "training",
+    "warmup": "energy",
+    "tournament": "energy",
+    "ceremony": "motivational",
+    "team": "motivational",
+    "spirit": "motivational",
+    "victory": "celebration",
+    "award": "celebration",
+    "trophy": "celebration",
+    "photo": "chill",
+    "slideshow": "chill",
+}
+
+
 def find_music(style="epic"):
-    """Find a music file by style name."""
+    """Find a music file by style name. Supports folder-based library."""
+    import random
+
+    # Check folder first (music/epic/*.mp3)
+    style_dir = MUSIC_DIR / style
+    if style_dir.is_dir():
+        files = list(style_dir.glob("*.mp3")) + list(style_dir.glob("*.m4a"))
+        if files:
+            chosen = random.choice(files)
+            print(f"  Music: {style}/{chosen.name}")
+            return chosen
+
+    # Fall back to single file (music/epic.mp3)
     for ext in ("mp3", "m4a", "wav", "ogg"):
         path = MUSIC_DIR / f"{style}.{ext}"
         if path.exists():
             return path
 
     # Fall back to any file in music dir
-    files = list(MUSIC_DIR.glob("*.*"))
-    if files:
-        print(f"  Music '{style}' not found, using {files[0].name}")
-        return files[0]
+    all_files = []
+    for p in MUSIC_DIR.rglob("*.mp3"):
+        all_files.append(p)
+    if all_files:
+        chosen = random.choice(all_files)
+        print(f"  Music '{style}' not found, using {chosen.name}")
+        return chosen
 
     return None
+
+
+def music_for_type(video_type):
+    """Get music style from video type."""
+    return TYPE_TO_MUSIC.get(video_type, "energy")
 
 
 # ── Full Pipeline ────────────────────────────────────────────────────────────
@@ -494,6 +534,9 @@ Music files go in: scripts/youtube/music/
     reel.add_argument("--title", default="SC VIKING")
     reel.add_argument("--subtitle", default="")
     reel.add_argument("--music", default=None, help="Music style (epic, chill, energy)")
+    reel.add_argument("--type", default=None,
+                      choices=list(TYPE_TO_MUSIC.keys()),
+                      help="Video type — auto-selects music and title")
     reel.add_argument("--output", "-o", default=None)
     reel.add_argument("--no-intro", action="store_true")
     reel.add_argument("--no-outro", action="store_true")
@@ -527,11 +570,17 @@ Music files go in: scripts/youtube/music/
     args = parser.parse_args()
 
     if args.command == "reel":
+        # Auto-select music from --type if --music not specified
+        music = args.music
+        if not music and args.type:
+            music = music_for_type(args.type)
+            print(f"  Auto-selected music: {music} (for type: {args.type})")
+
         output = args.output or f"sc-viking-reel-{Path(args.files[0]).stem}.mp4"
         result = build_reel(
             args.files, output,
             title=args.title, subtitle=args.subtitle,
-            music_style=args.music,
+            music_style=music,
             add_intro=not args.no_intro,
             add_outro=not args.no_outro,
             watermark=not args.no_watermark,

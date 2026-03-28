@@ -15,3 +15,5 @@ config/token.json
 
 # Heavy media — moved to media-archive/, serve via CDN later
 media-archive/
+scripts/youtube/music/**/*.mp3
+scripts/youtube/music/**/*.m4a
