@@ -12,6 +12,7 @@ const shorts = [
   { id: "JO6YakcAQzU", title: "Tournament Goal Moment" },
   { id: "lWHSUdoaFnM", title: "Tournament Match Action" },
   { id: "R_Z0DxhNDxE", title: "Training Atmosphere" },
+  { id: "aba3jME0VTU", title: "Match vs Purple Team" },
 ];
 
 // Horizontal videos (16:9) — shown as highlights
@@ -25,7 +26,6 @@ const highlights = [
   { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
   { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
   { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
-  { id: "aba3jME0VTU", title: "Match vs Purple Team" },
 ];
 
 export function VideoCarousel() {

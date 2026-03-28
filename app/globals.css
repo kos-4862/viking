@@ -1526,6 +1526,10 @@ input {
   box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
 }
 
+.shorts-modal__touch-overlay {
+  display: none;
+}
+
 .shorts-modal__player iframe {
   position: absolute;
   inset: 0;
@@ -1605,6 +1609,15 @@ input {
 
   .shorts-modal__player iframe {
     z-index: 1;
+  }
+
+  .shorts-modal__touch-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 10000;
+    background: transparent;
+    touch-action: none;
   }
 
   .shorts-modal__title,
