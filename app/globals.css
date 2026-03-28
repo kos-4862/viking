@@ -2416,10 +2416,14 @@ button:focus-visible {
     font-size: 11px;
   }
 
-  /* Gallery — grid on mobile */
+  /* Gallery — grid on mobile, show first 6 */
   .gallery-scroll {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+  }
+
+  .gallery-scroll .gallery-item:nth-child(n+7) {
+    display: none;
   }
 
   .section-gallery .shell {
