@@ -75,7 +75,27 @@ def get_dimensions(path):
         capture_output=True, text=True,
     )
     parts = result.stdout.strip().split(",")
-    return int(parts[0]), int(parts[1]) if len(parts) == 2 else (0, 0)
+    return (int(parts[0]), int(parts[1])) if len(parts) == 2 else (0, 0)
+
+
+def detect_orientation(path):
+    """Detect video orientation: 'vertical' (9:16) or 'horizontal' (16:9)."""
+    w, h = get_dimensions(path)
+    if w == 0 or h == 0:
+        return "vertical"  # default for shorts
+    return "vertical" if h > w else "horizontal"
+
+
+def detect_orientation_multi(files):
+    """Detect dominant orientation from multiple files."""
+    vert = 0
+    horiz = 0
+    for f in files:
+        if detect_orientation(f) == "vertical":
+            vert += 1
+        else:
+            horiz += 1
+    return "vertical" if vert >= horiz else "horizontal"
 
 
 # ── Intro Generation ─────────────────────────────────────────────────────────
@@ -379,10 +399,16 @@ def build_reel(
     add_intro=True,
     add_outro=True,
     watermark=True,
-    orientation="vertical",  # vertical (9:16) or horizontal (16:9)
+    orientation=None,  # None = auto-detect, "vertical" (9:16) or "horizontal" (16:9)
 ):
     """Full pipeline: normalize → concat → intro/outro → watermark → music."""
     tmpdir = Path(tempfile.mkdtemp(prefix="viking_"))
+
+    # Auto-detect orientation from source files
+    if orientation is None:
+        orientation = detect_orientation_multi(input_files)
+        print(f"  Auto-detected orientation: {orientation}")
+
     target_w = WIDTH if orientation == "vertical" else 1920
     target_h = HEIGHT if orientation == "vertical" else 1080
 
@@ -541,7 +567,8 @@ Music files go in: scripts/youtube/music/
     reel.add_argument("--no-intro", action="store_true")
     reel.add_argument("--no-outro", action="store_true")
     reel.add_argument("--no-watermark", action="store_true")
-    reel.add_argument("--horizontal", action="store_true", help="16:9 instead of 9:16")
+    reel.add_argument("--orientation", default=None, choices=["vertical", "horizontal", "auto"],
+                      help="Output orientation (default: auto-detect from source)")
     reel.add_argument("--upload", action="store_true", help="Upload to YouTube after")
     reel.add_argument("--privacy", default="unlisted", choices=["public", "unlisted", "private"])
 
@@ -584,7 +611,7 @@ Music files go in: scripts/youtube/music/
             add_intro=not args.no_intro,
             add_outro=not args.no_outro,
             watermark=not args.no_watermark,
-            orientation="horizontal" if args.horizontal else "vertical",
+            orientation=args.orientation if args.orientation != "auto" else None,
         )
         if result and args.upload:
             from yt_manager import upload_video
