@@ -14,6 +14,7 @@ const mainPhotos = [
   { src: "/images/gallery/main-06.webp", fallback: "/images/gallery/main-06.jpg", alt: "Match in the arena" },
   { src: "/images/gallery/main-07.webp", fallback: "/images/gallery/main-07.jpg", alt: "Team in the arena" },
   { src: "/images/gallery/main-08.webp", fallback: "/images/gallery/main-08.jpg", alt: "Winter team photo" },
+  { src: "/images/gallery/main-09.webp", fallback: "/images/gallery/main-09.jpg", alt: "Players collage with club emblem" },
 ];
 
 const allPhotos = Array.from({ length: 42 }, (_, i) => {
