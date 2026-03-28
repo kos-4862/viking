@@ -36,6 +36,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang={lang} className={`${montserrat.variable} ${bebasNeue.variable}`}>
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#da1123" />
         <link rel="preload" as="image" href="/sc-viking-emblem-transparent.webp" type="image/webp" />
         <link rel="preload" as="image" href="/images/hero-bg.webp" type="image/webp" fetchPriority="high" />
         <script

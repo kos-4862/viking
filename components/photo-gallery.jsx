@@ -2,20 +2,24 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const mainPhotos = [
-  { src: "/images/gallery/main-01.jpg", alt: "Player kicking the ball" },
-  { src: "/images/gallery/main-02.jpg", alt: "Friends on the field" },
-  { src: "/images/gallery/main-03.jpg", alt: "Team celebrating with Ukrainian flag and medals" },
-  { src: "/images/gallery/main-04.jpg", alt: "Parents with Viking flag" },
-  { src: "/images/gallery/main-05.jpg", alt: "Team photo at the goal" },
-  { src: "/images/gallery/main-06.jpg", alt: "Match in the arena" },
-  { src: "/images/gallery/main-07.jpg", alt: "Team in the arena" },
-  { src: "/images/gallery/main-08.jpg", alt: "Winter team photo" },
+  { src: "/images/gallery/main-01.webp", fallback: "/images/gallery/main-01.jpg", alt: "Player kicking the ball" },
+  { src: "/images/gallery/main-02.webp", fallback: "/images/gallery/main-02.jpg", alt: "Friends on the field" },
+  { src: "/images/gallery/main-03.webp", fallback: "/images/gallery/main-03.jpg", alt: "Team celebrating with Ukrainian flag and medals" },
+  { src: "/images/gallery/main-04.webp", fallback: "/images/gallery/main-04.jpg", alt: "Parents with Viking flag" },
+  { src: "/images/gallery/main-05.webp", fallback: "/images/gallery/main-05.jpg", alt: "Team photo at the goal" },
+  { src: "/images/gallery/main-06.webp", fallback: "/images/gallery/main-06.jpg", alt: "Match in the arena" },
+  { src: "/images/gallery/main-07.webp", fallback: "/images/gallery/main-07.jpg", alt: "Team in the arena" },
+  { src: "/images/gallery/main-08.webp", fallback: "/images/gallery/main-08.jpg", alt: "Winter team photo" },
 ];
 
-const allPhotos = Array.from({ length: 42 }, (_, i) => ({
-  src: `/images/gallery/photo-${String(i + 1).padStart(2, "0")}.jpg`,
-  alt: `SC Viking photo ${i + 1}`,
-}));
+const allPhotos = Array.from({ length: 42 }, (_, i) => {
+  const num = String(i + 1).padStart(2, "0");
+  return {
+    src: `/images/gallery/photo-${num}.webp`,
+    fallback: `/images/gallery/photo-${num}.jpg`,
+    alt: `SC Viking photo ${i + 1}`,
+  };
+});
 
 export { mainPhotos, allPhotos };
 
@@ -88,7 +92,10 @@ export function PhotoGallery({ photos = mainPhotos }) {
             onClick={() => setActive(i)}
             aria-label={photo.alt}
           >
-            <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+            <picture>
+              <source srcSet={photo.src} type="image/webp" />
+              <img src={photo.fallback} alt={photo.alt} loading="lazy" decoding="async" />
+            </picture>
           </button>
         ))}
       </div>
@@ -119,12 +126,14 @@ export function PhotoGallery({ photos = mainPhotos }) {
             &#8249;
           </button>
 
-          <img
-            src={photos[active].src}
-            alt={photos[active].alt}
-            className="lightbox-img"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <picture onClick={(e) => e.stopPropagation()}>
+            <source srcSet={photos[active].src} type="image/webp" />
+            <img
+              src={photos[active].fallback}
+              alt={photos[active].alt}
+              className="lightbox-img"
+            />
+          </picture>
 
           <button
             className="lightbox-nav lightbox-next"
