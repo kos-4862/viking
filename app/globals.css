@@ -1326,6 +1326,8 @@ input {
   display: flex;
   align-items: center;
   gap: 8px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .video-strip__arrow {
@@ -1351,12 +1353,15 @@ input {
 
 .video-showcase__thumbs {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-width: 0;
 }
 
 .video-showcase__thumbs::-webkit-scrollbar {
@@ -1421,9 +1426,11 @@ input {
 
 .shorts-strip-wrapper {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .shorts-section {
