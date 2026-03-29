@@ -85,20 +85,29 @@ export function ShortsModal({ shorts, activeIndex, onClose, onChangeIndex }) {
       )}
 
       {/* player */}
-      <div className="shorts-modal__player">
+      <div className={`shorts-modal__player${current.type === "instagram" ? " shorts-modal__player--instagram" : ""}`}>
         {/* Touch overlay — catches swipes above iframe */}
         <div
           className="shorts-modal__touch-overlay"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         />
-        <iframe
-          key={current.id}
-          src={`https://www.youtube.com/embed/${current.id}?autoplay=1&loop=1&playlist=${current.id}`}
-          title={current.title}
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
+        {current.type === "instagram" ? (
+          <iframe
+            key={current.id}
+            src={`https://www.instagram.com/reel/${current.id}/embed/`}
+            title={current.title}
+            allowFullScreen
+          />
+        ) : (
+          <iframe
+            key={current.id}
+            src={`https://www.youtube.com/embed/${current.id}?autoplay=1&loop=1&playlist=${current.id}`}
+            title={current.title}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          />
+        )}
         <p className="shorts-modal__title">{current.title}</p>
         <p className="shorts-modal__counter">{activeIndex + 1} / {shorts.length}</p>
       </div>
