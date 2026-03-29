@@ -45,9 +45,9 @@ SHORTS_METADATA = [
     ),
     (
         "13-ceremony.mp4",
-        "SC Viking — Ukraine Pride 🇺🇦 #shorts",
+        "SC Viking & Dinamo Bucharest — Moment of Silence 🇺🇦🕯 #shorts",
         "team",
-        "SC Viking kids proudly holding the Ukrainian flag — our roots, our pride!",
+        "SC Viking and Dinamo Bucharest players observe a moment of silence for the children killed in the Russian missile strike on Kryvyi Rih, Ukraine. On April 4, 2025, a Russian Iskander missile hit a residential area near a children's playground, killing 19 people including 9 children. We remember. We stand with Ukraine.",
     ),
     (
         "14-outdoor-1.mp4",
