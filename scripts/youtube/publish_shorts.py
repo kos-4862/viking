@@ -27,9 +27,9 @@ SHORTS_METADATA = [
     ),
     (
         "06-drill.mp4",
-        "SC Viking — Coach in Action 🎯 #shorts",
-        "training",
-        "Coach directing the training — building champions every session!",
+        "SC Viking — Indoor Match Day 🏟 #shorts",
+        "match",
+        "Indoor match at the dome — coach watching from the sideline!",
     ),
     (
         "09-drone.mp4",

@@ -47,8 +47,9 @@ SHORTS_TAGS = {
         "football academy", "Romania", "#shorts",
     ],
     "ukrainian_bucharest": [
-        "українці Бухарест", "українці Румунія", "ukrainians Bucharest",
-        "українська діаспора", "діаспора Румунія", "ucraineni București",
+        "українці в Бухаресті", "українці Бухарест", "українці Румунія",
+        "ukrainians Bucharest", "ukrainians in Bucharest",
+        "ucraineni București", "ucraineni în București",
         "футбол для дітей Бухарест", "дитячий спорт Бухарест",
         "секція футболу Бухарест", "спорт для дітей Румунія",
     ],
@@ -103,7 +104,7 @@ SC Viking — дитячий футбольний клуб у Бухаресті
 📩 scvikingur@gmail.com
 
 #SCViking #YouthFootball #KidsFootball #Bucharest #shorts
-#футбол #дитячийфутбол #українціБухарест #fotbalcopii"""
+#футбол #дитячийфутбол #українцівБухаресті #українціБухарест #fotbalcopii"""
 
 
 def generate_shorts_intro(output, title="SC VIKING", duration=INTRO_DURATION):
