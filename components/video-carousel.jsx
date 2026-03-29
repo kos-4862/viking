@@ -34,19 +34,32 @@ const highlights = [
   { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
 ];
 
+const ArrowLeft = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+);
+
+const ArrowRight = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="9 6 15 12 9 18" />
+  </svg>
+);
+
 export function VideoCarousel() {
   const [featuredIdx, setFeaturedIdx] = useState(0);
   const [modalIdx, setModalIdx] = useState(null);
+  const thumbsRef = useRef(null);
   const shortsRef = useRef(null);
 
   const featured = highlights[featuredIdx];
 
-  const scrollShorts = (dir) => {
-    const track = shortsRef.current;
+  const scrollStrip = (ref, dir) => {
+    const track = ref.current;
     if (!track) return;
-    const card = track.querySelector(".shorts-strip__item");
+    const card = track.querySelector(":scope > *");
     const distance = card ? card.offsetWidth + 12 : 160;
-    track.scrollBy({ left: dir * distance, behavior: "smooth" });
+    track.scrollBy({ left: dir * distance * 2, behavior: "smooth" });
   };
 
   return (
@@ -56,24 +69,42 @@ export function VideoCarousel() {
         <VideoTile videoId={featured.id} isShort={false} title={featured.title} />
       </div>
 
-      {/* Highlight thumbnails */}
-      <div className="video-showcase__thumbs">
-        {highlights.map((h, i) => (
-          <button
-            key={h.id}
-            className={`video-showcase__thumb${i === featuredIdx ? " video-showcase__thumb--active" : ""}`}
-            onClick={() => setFeaturedIdx(i)}
-            aria-label={h.title}
-          >
-            <img
-              src={`https://i.ytimg.com/vi/${h.id}/mqdefault.jpg`}
-              alt={h.title}
-              loading="lazy"
-              decoding="async"
-            />
-            <span className="video-showcase__thumb-title">{h.title.replace("SC Viking ", "")}</span>
-          </button>
-        ))}
+      {/* Highlight thumbnails — scrollable strip with arrows */}
+      <div className="video-strip-wrapper">
+        <button
+          className="video-strip__arrow video-strip__arrow--left"
+          onClick={() => scrollStrip(thumbsRef, -1)}
+          aria-label="Scroll left"
+        >
+          <ArrowLeft />
+        </button>
+
+        <div className="video-showcase__thumbs" ref={thumbsRef}>
+          {highlights.map((h, i) => (
+            <button
+              key={h.id}
+              className={`video-showcase__thumb${i === featuredIdx ? " video-showcase__thumb--active" : ""}`}
+              onClick={() => setFeaturedIdx(i)}
+              aria-label={h.title}
+            >
+              <img
+                src={`https://i.ytimg.com/vi/${h.id}/mqdefault.jpg`}
+                alt={h.title}
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="video-showcase__thumb-title">{h.title.replace("SC Viking ", "")}</span>
+            </button>
+          ))}
+        </div>
+
+        <button
+          className="video-strip__arrow video-strip__arrow--right"
+          onClick={() => scrollStrip(thumbsRef, 1)}
+          aria-label="Scroll right"
+        >
+          <ArrowRight />
+        </button>
       </div>
 
       {/* Shorts strip */}
@@ -82,12 +113,10 @@ export function VideoCarousel() {
         <div className="shorts-strip-wrapper">
           <button
             className="shorts-strip__arrow shorts-strip__arrow--left"
-            onClick={() => scrollShorts(-1)}
+            onClick={() => scrollStrip(shortsRef, -1)}
             aria-label="Scroll left"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+            <ArrowLeft />
           </button>
 
           <div className="shorts-strip" ref={shortsRef}>
@@ -114,12 +143,10 @@ export function VideoCarousel() {
 
           <button
             className="shorts-strip__arrow shorts-strip__arrow--right"
-            onClick={() => scrollShorts(1)}
+            onClick={() => scrollStrip(shortsRef, 1)}
             aria-label="Scroll right"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 6 15 12 9 18" />
-            </svg>
+            <ArrowRight />
           </button>
         </div>
       </div>
