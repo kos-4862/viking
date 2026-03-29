@@ -17,6 +17,7 @@ const shorts = [
 
 // Horizontal videos (16:9) — shown as highlights
 const highlights = [
+  { id: "iOwEwk-vqZ0", title: "When Heroes Are Born" },
   { id: "b7dCTjfvfmE", title: "Outdoor Match Highlights" },
   { id: "Ns5ek9PI9JY", title: "Outdoor Match — Drone View" },
   { id: "k-e4fuMrmuo", title: "Indoor Match vs Blue Team" },
@@ -26,6 +27,11 @@ const highlights = [
   { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
   { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
   { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
+  { id: "hyB0p6DugBU", title: "Moment of Silence" },
+  { id: "DRtdYMLNOR0", title: "Speed Training" },
+  { id: "ALYh1k5FMCQ", title: "Agility Drill" },
+  { id: "YdEDcy-CscY", title: "Outdoor Match" },
+  { id: "YEBbgHFNCsA", title: "Futsal Tournament" },
 ];
 
 export function VideoCarousel() {
