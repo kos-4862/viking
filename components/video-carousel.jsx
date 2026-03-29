@@ -13,6 +13,11 @@ const shorts = [
   { id: "lWHSUdoaFnM", title: "Tournament Match Action" },
   { id: "R_Z0DxhNDxE", title: "Training Atmosphere" },
   { id: "aba3jME0VTU", title: "Stelele Viitorului Cup" },
+  { id: "hyB0p6DugBU", title: "Moment of Silence" },
+  { id: "DRtdYMLNOR0", title: "Speed Training" },
+  { id: "ALYh1k5FMCQ", title: "Agility Drill" },
+  { id: "YdEDcy-CscY", title: "Outdoor Match" },
+  { id: "YEBbgHFNCsA", title: "Futsal Tournament" },
 ];
 
 // Horizontal videos (16:9) — shown as highlights
@@ -27,11 +32,6 @@ const highlights = [
   { id: "dM2jFjd1JYw", title: "Indoor Match Action" },
   { id: "sv-WdtXpUM4", title: "Indoor Attack Play" },
   { id: "kT7xbgo0rSU", title: "Indoor Training Drill" },
-  { id: "hyB0p6DugBU", title: "Moment of Silence" },
-  { id: "DRtdYMLNOR0", title: "Speed Training" },
-  { id: "ALYh1k5FMCQ", title: "Agility Drill" },
-  { id: "YdEDcy-CscY", title: "Outdoor Match" },
-  { id: "YEBbgHFNCsA", title: "Futsal Tournament" },
 ];
 
 export function VideoCarousel() {
