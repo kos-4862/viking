@@ -159,37 +159,42 @@ def convert_to_vertical(input_path, output, title=""):
     w, h = get_dimensions(input_path)
     is_vertical = h > w if w > 0 and h > 0 else False
 
-    # Common branding overlay (applied to both orientations)
+    # YouTube Shorts UI safe zones:
+    # Top 0-120px: status bar (AVOID)
+    # Bottom 1640-1920px: like/comment/share + channel + description (AVOID)
+    # Right 980-1080px: action buttons (AVOID)
+    # Safe zone: x=0-960, y=130-1620
+
+    # Common branding overlay — positioned in SAFE ZONE
     brand_overlay = (
-        # Red accent line at very top
-        f"drawbox=x=0:y=0:w=1080:h=4:color=0x{ACCENT_COLOR[2:]}:t=fill,"
-        # Red accent line at very bottom
-        f"drawbox=x=0:y=1916:w=1080:h=4:color=0x{ACCENT_COLOR[2:]}:t=fill,"
-        # Red thin side lines
-        f"drawbox=x=0:y=0:w=3:h=1920:color=0x{ACCENT_COLOR[2:]}@0.4:t=fill,"
-        f"drawbox=x=1077:y=0:w=3:h=1920:color=0x{ACCENT_COLOR[2:]}@0.4:t=fill,"
+        # Red accent line below status bar safe area
+        f"drawbox=x=0:y=130:w=1080:h=3:color=0x{ACCENT_COLOR[2:]}@0.6:t=fill,"
+        # Red accent line above bottom safe area
+        f"drawbox=x=0:y=1630:w=1080:h=3:color=0x{ACCENT_COLOR[2:]}@0.6:t=fill,"
+        # Thin left side accent
+        f"drawbox=x=0:y=130:w=3:h=1500:color=0x{ACCENT_COLOR[2:]}@0.3:t=fill,"
     )
 
-    # Title bar at bottom
+    # Title bar — ABOVE YouTube's bottom UI (safe zone)
     title_bar = (
-        # Dark gradient bar at bottom
-        f"drawbox=x=0:y=1750:w=1080:h=170:color=black@0.6:t=fill,"
-        # Red accent line above title bar
-        f"drawbox=x=0:y=1750:w=1080:h=3:color=0x{ACCENT_COLOR[2:]}@0.8:t=fill,"
+        # Dark bar in safe zone above YouTube UI
+        f"drawbox=x=0:y=1530:w=960:h=100:color=black@0.5:t=fill,"
+        # Red accent
+        f"drawbox=x=0:y=1530:w=960:h=3:color=0x{ACCENT_COLOR[2:]}@0.7:t=fill,"
     )
 
     if title:
         title_bar += (
-            f"drawtext=text='{title}':fontsize=36:fontcolor=white:"
-            f"x=(w-text_w)/2:y=1790:font='DejaVu Sans':borderw=2:bordercolor=black@0.3,"
+            f"drawtext=text='{title}':fontsize=32:fontcolor=white:"
+            f"x=20:y=1555:font='DejaVu Sans':borderw=2:bordercolor=black@0.3,"
         )
 
     title_bar += (
-        f"drawtext=text='scviking2021.com':fontsize=18:fontcolor=white@0.5:"
-        f"x=(w-text_w)/2:y=1845:font='DejaVu Sans',"
-        # SC VIKING badge top-left with background
-        f"drawbox=x=10:y=25:w=195:h=50:color=black@0.5:t=fill,"
-        f"drawbox=x=10:y=25:w=195:h=3:color=0x{ACCENT_COLOR[2:]}:t=fill"
+        f"drawtext=text='scviking2021.com':fontsize=16:fontcolor=white@0.5:"
+        f"x=20:y=1600:font='DejaVu Sans',"
+        # SC VIKING badge — below status bar, in safe zone
+        f"drawbox=x=12:y=145:w=185:h=48:color=black@0.5:t=fill,"
+        f"drawbox=x=12:y=145:w=185:h=3:color=0x{ACCENT_COLOR[2:]}:t=fill"
     )
 
     # Video encoding params — optimized for Shorts (small file size)
@@ -208,11 +213,11 @@ def convert_to_vertical(input_path, output, title=""):
             f"[0:v]scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=decrease,"
             f"pad={WIDTH}:{HEIGHT}:-1:-1:color=0x{BG_COLOR[2:]}[scaled];"
             f"[1:v]scale=48:-1[logo];"
-            f"[scaled][logo]overlay=18:32,"
+            f"[scaled][logo]overlay=20:152,"
             f"{brand_overlay}"
             f"{title_bar},"
             f"drawtext=text='SC VIKING':fontsize=22:fontcolor=white@0.9:"
-            f"x=68:y=38:font='DejaVu Sans'",
+            f"x=70:y=158:font='DejaVu Sans'",
         ] + encode_params + [str(output)],
         "Processing vertical video")
     else:
@@ -232,7 +237,7 @@ def convert_to_vertical(input_path, output, title=""):
             f"{brand_overlay}"
             f"{title_bar},"
             f"drawtext=text='SC VIKING':fontsize=22:fontcolor=white@0.9:"
-            f"x=68:y=38:font='DejaVu Sans'",
+            f"x=70:y=158:font='DejaVu Sans'",
         ] + encode_params + [str(output)],
         "Converting horizontal → vertical with blur")
 
