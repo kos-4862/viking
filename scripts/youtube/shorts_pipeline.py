@@ -35,7 +35,7 @@ from video_pipeline import (
 
 WIDTH = 1080
 HEIGHT = 1920
-MAX_DURATION = 58  # YouTube Shorts limit is 60s, leave 2s margin
+MAX_DURATION = 56  # YouTube Shorts limit is 60s, leave margin for concat overhead
 INTRO_DURATION = 1.5
 OUTRO_DURATION = 2.5
 
@@ -112,7 +112,7 @@ def generate_shorts_intro(output, title="SC VIKING", duration=INTRO_DURATION):
         "-f", "lavfi", "-i", f"color=c=0x{BG_COLOR[2:]}:s={WIDTH}x{HEIGHT}:d={duration}",
         "-i", str(LOGO_PATH),
         "-filter_complex",
-        f"[1:v]scale=200:200[logo];"
+        f"[1:v]scale=165:-1[logo];"
         f"[0:v][logo]overlay=(W-w)/2:(H-h)/2-150:enable='gte(t,0.1)',"
         f"fade=in:st=0:d=0.3,fade=out:st={duration-0.3}:d=0.3,"
         f"drawtext=text='{title}':fontsize=56:fontcolor=white:"
@@ -132,7 +132,7 @@ def generate_shorts_outro(output, duration=OUTRO_DURATION):
         "-f", "lavfi", "-i", f"color=c=0x{BG_COLOR[2:]}:s={WIDTH}x{HEIGHT}:d={duration}",
         "-i", str(LOGO_PATH),
         "-filter_complex",
-        f"[1:v]scale=120:120[logo];"
+        f"[1:v]scale=100:-1[logo];"
         f"[0:v][logo]overlay=(W-w)/2:(H-h)/2-120,"
         f"fade=in:st=0:d=0.3,fade=out:st={duration-0.3}:d=0.3,"
         f"drawtext=text='SUBSCRIBE':fontsize=40:fontcolor=0x{ACCENT_COLOR[2:]}:"
@@ -227,7 +227,7 @@ def convert_to_vertical(input_path, output, title=""):
             "-filter_complex",
             # Blur background
             f"[0:v]scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=increase,"
-            f"crop={WIDTH}:{HEIGHT},gblur=sigma=25,eq=brightness=-0.15[blurbg];"
+            f"crop={WIDTH}:{HEIGHT},gblur=sigma=20,eq=brightness=-0.05:saturation=1.4[blurbg];"
             # Main video centered
             f"[0:v]scale={WIDTH}:-1:force_original_aspect_ratio=decrease[main];"
             f"[blurbg][main]overlay=(W-w)/2:(H-h)/2[composed];"
@@ -255,17 +255,45 @@ def build_short(
     outro_dur = OUTRO_DURATION if add_outro else 0
     max_content = MAX_DURATION - intro_dur - outro_dur
 
-    # Trim if needed
+    # Smart cut: if video is longer than max, find the best moment
     content_dur = min(input_dur, max_content)
+    smart_start = 0
+
+    if input_dur > max_content + 5:
+        # Video is significantly longer — find best segment
+        try:
+            from auto_shorts import analyze_motion, find_best_moments
+            print(f"  Finding best {content_dur:.0f}s moment in {input_dur:.0f}s video...")
+            motion = analyze_motion(str(input_path))
+            moments = find_best_moments(motion, count=1, clip_duration=int(content_dur))
+            if moments:
+                smart_start = moments[0][0]
+                print(f"  Best moment at {smart_start:.0f}s (activity: {moments[0][1]:.2f})")
+        except Exception:
+            pass  # Fall back to start of video
 
     print(f"\n{'='*50}")
     print(f"SC Viking Shorts Pipeline")
     print(f"  Input: {Path(input_path).name} ({input_dur:.1f}s)")
     print(f"  Type: {video_type}")
-    print(f"  Max content: {max_content:.1f}s")
+    print(f"  Content: {content_dur:.0f}s from {smart_start:.0f}s")
     print(f"{'='*50}\n")
 
-    # 1. Convert to vertical with branding
+    # 1. Extract best segment if needed
+    actual_input = input_path
+    if smart_start > 0 or content_dur < input_dur:
+        cut_path = tmpdir / "cut.mp4"
+        run_ffmpeg([
+            "-ss", str(smart_start),
+            "-i", str(input_path),
+            "-t", str(content_dur),
+            "-c:v", "libx264", "-preset", "fast", "-crf", "22",
+            "-c:a", "aac", "-b:a", "128k",
+            str(cut_path),
+        ], f"Cutting best {content_dur:.0f}s from {smart_start:.0f}s")
+        actual_input = str(cut_path)
+
+    # 2. Convert to vertical with branding
     converted = tmpdir / "converted.mp4"
     type_titles = {
         "match": "MATCH HIGHLIGHTS", "goal": "GOAL!",
@@ -273,16 +301,7 @@ def build_short(
         "team": "TEAM SPIRIT",
     }
     display_title = type_titles.get(video_type, title)
-    convert_to_vertical(input_path, converted, title=display_title)
-
-    # Trim to max duration
-    if content_dur < input_dur:
-        trimmed = tmpdir / "trimmed.mp4"
-        run_ffmpeg([
-            "-i", str(converted), "-t", str(content_dur),
-            "-c", "copy", str(trimmed),
-        ], f"Trimming to {content_dur:.0f}s")
-        converted = trimmed
+    convert_to_vertical(actual_input, converted, title=display_title)
 
     # 2. Build parts list
     parts = []
@@ -318,13 +337,21 @@ def build_short(
     else:
         current = converted
 
-    # 4. Add music
+    # 4. Add music — random start position for variety
+    import random
     music_style = music_for_type(video_type) if music else None
     music_file = find_music(music_style) if music_style else None
 
     if music_file:
         final_dur = get_duration(str(current))
+        music_dur = get_duration(str(music_file))
         music_out = Path(output_path)
+
+        # Random start in music track for variety
+        music_start = 0
+        if music_dur > final_dur + 20:
+            music_start = random.randint(5, int(music_dur - final_dur - 5))
+            print(f"  Music starts at {music_start}s of {music_dur:.0f}s track")
 
         # Check for audio stream
         probe = subprocess.run(
@@ -334,12 +361,14 @@ def build_short(
         )
         has_audio = bool(probe.stdout.strip())
 
+        music_ss = ["-ss", str(music_start)] if music_start > 0 else []
+
         if has_audio:
             run_ffmpeg([
                 "-i", str(current),
-                "-stream_loop", "-1", "-i", str(music_file),
+                *music_ss, "-stream_loop", "-1", "-i", str(music_file),
                 "-filter_complex",
-                f"[1:a]volume=0.15,afade=in:st=0:d=1,"
+                f"[1:a]volume=0.25,afade=in:st=0:d=0.8,"
                 f"afade=out:st={final_dur-1.5}:d=1.5[music];"
                 f"[0:a]volume=1.0[orig];"
                 f"[orig][music]amix=inputs=2:duration=first[aout]",
@@ -351,15 +380,15 @@ def build_short(
         else:
             run_ffmpeg([
                 "-i", str(current),
-                "-stream_loop", "-1", "-i", str(music_file),
+                *music_ss, "-stream_loop", "-1", "-i", str(music_file),
                 "-filter_complex",
-                f"[1:a]volume=0.4,afade=in:st=0:d=0.5,"
+                f"[1:a]volume=0.6,afade=in:st=0:d=0.5,"
                 f"afade=out:st={final_dur-1}:d=1[aout]",
                 "-map", "0:v", "-map", "[aout]",
                 "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
                 "-t", str(final_dur), "-shortest",
                 str(music_out),
-            ], "Adding music (no original audio)")
+            ], "Adding music (louder, no original audio)")
     else:
         shutil.copy2(str(current), str(output_path))
 
