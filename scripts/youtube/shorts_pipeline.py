@@ -207,7 +207,7 @@ def convert_to_vertical(input_path, output, title=""):
             "-filter_complex",
             f"[0:v]scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=decrease,"
             f"pad={WIDTH}:{HEIGHT}:-1:-1:color=0x{BG_COLOR[2:]}[scaled];"
-            f"[1:v]scale=40:40[logo];"
+            f"[1:v]scale=48:-1[logo];"
             f"[scaled][logo]overlay=18:32,"
             f"{brand_overlay}"
             f"{title_bar},"
@@ -227,7 +227,7 @@ def convert_to_vertical(input_path, output, title=""):
             f"[0:v]scale={WIDTH}:-1:force_original_aspect_ratio=decrease[main];"
             f"[blurbg][main]overlay=(W-w)/2:(H-h)/2[composed];"
             # Logo
-            f"[1:v]scale=40:40[logo];"
+            f"[1:v]scale=48:-1[logo];"
             f"[composed][logo]overlay=18:32,"
             f"{brand_overlay}"
             f"{title_bar},"
