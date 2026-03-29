@@ -138,7 +138,7 @@ def process_clip(input_path, output, clip_num, speed=SPEED):
         f"drawtext=text='SC VIKING':fontsize=18:fontcolor=white@0.8:"
         f"x=20:y={HEIGHT-38}:font='DejaVu Sans',"
         # Match counter
-        f"drawtext=text='MATCH {clip_num}':fontsize=18:fontcolor=0x{ACCENT_COLOR[2:]}:"
+        f"drawtext=text='MATCH DAY {clip_num}':fontsize=18:fontcolor=0x{ACCENT_COLOR[2:]}:"
         f"x={WIDTH-120}:y={HEIGHT-38}:font='DejaVu Sans',"
         # Top accent line
         f"drawbox=x=0:y=0:w={WIDTH}:h=2:color=0x{ACCENT_COLOR[2:]}@0.5:t=fill",
@@ -199,7 +199,7 @@ def build_match_video(clips, output_path, title, subtitle, music_path=None):
         # Title card before each match (except first)
         if i > 0:
             card = tmpdir / f"card_{i}.mp4"
-            generate_title_card(card, f"MATCH {i + 1}")
+            generate_title_card(card, f"MATCH DAY {i + 1}")
             parts.append(card)
 
         processed = tmpdir / f"clip_{i}.mp4"
@@ -253,8 +253,9 @@ def build_match_video(clips, output_path, title, subtitle, music_path=None):
 if __name__ == "__main__":
     clips = [
         "media-archive/Video/sc-viking-indoor-match-vs-blue-team.MOV",
-        "media-archive/Video/sc-viking-indoor-match-attack.MOV",
+        "media-archive/Video/sc-viking-indoor-team-training.MOV",
         "media-archive/Video/sc-viking-indoor-match-vs-yellow.MOV",
+        "media-archive/Video/sc-viking-indoor-training-drill.MOV",
     ]
 
     build_match_video(
