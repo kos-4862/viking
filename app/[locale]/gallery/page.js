@@ -18,7 +18,7 @@ export default function GalleryPage() {
           <a href={`/${locale}`} className="gallery-back">← {copy.gallery.backLabel || "На головну"}</a>
           <div className="section-heading">
             <p className="eyebrow">{copy.gallery.eyebrow}</p>
-            <h2>{copy.gallery.title}</h2>
+            <h1>{copy.gallery.title}</h1>
           </div>
           <PhotoGallery photos={allPhotos} paginated />
         </div>
@@ -41,6 +41,9 @@ export default function GalleryPage() {
               </a>
               <a href="https://www.tiktok.com/@fcvb.2021" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                 <img src="/icons/tiktok.svg" alt="TikTok" aria-hidden="true" />
+              </a>
+              <a href="https://www.youtube.com/channel/UCD5ho8RpSJ8vccMVvprGpwQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <img src="/icons/youtube.svg" alt="YouTube" aria-hidden="true" />
               </a>
             </div>
           </div>

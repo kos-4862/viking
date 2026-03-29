@@ -3,7 +3,7 @@
   "short_name": "SC Viking",
   "description": "Children's football academy in Bucharest",
   "start_url": "/ua",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#0a0a12",
   "theme_color": "#da1123",
   "icons": [
