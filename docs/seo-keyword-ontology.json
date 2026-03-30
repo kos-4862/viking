@@ -1,0 +1,673 @@
+{
+  "_meta": {
+    "project": "SC Viking",
+    "version": "1.0",
+    "updated": "2026-03-30",
+    "notes": "Keyword ontology for youth football academy in Bucharest. Covers 4 languages, 6 intent clusters, 3 audience segments. Content requires native-speaker review before publishing."
+  },
+
+  "audiences": {
+    "parents_ua_diaspora": "PRIMARY — Ukrainian diaspora families in Bucharest / Romania. Search in both Ukrainian and Russian. Coach speaks UA+RU natively. This is the core audience.",
+    "parents_local_ro": "SECONDARY — Romanian parents in Bucharest. Site is in Romanian but coach does not speak Romanian. Communication barrier exists.",
+    "parents_expat_en": "LOW — English-speaking expat parents. Site is in English but coach does not speak English. Communication barrier exists."
+  },
+  "_audience_note": "Coach speaks only Ukrainian and Russian. Site exists in 4 languages (UA, RU, RO, EN) for discoverability, but real conversion depends on UA/RU-speaking families.",
+
+  "clusters": [
+
+    {
+      "id": "C1_FIND_CLUB",
+      "intent": "commercial-investigation",
+      "description": "Parent actively searching for a football club for their child in Bucharest",
+      "priority": "P0",
+      "keywords": {
+        "ro": [
+          "club fotbal copii București",
+          "academie fotbal copii București",
+          "fotbal pentru copii București",
+          "școală de fotbal copii București",
+          "club sportiv copii București",
+          "club de fotbal juniori București",
+          "cel mai bun club fotbal copii București",
+          "fotbal copii lângă mine",
+          "club fotbal copii sector 4",
+          "club fotbal copii sector 6",
+          "antrenament fotbal copii București",
+          "cursuri fotbal copii București",
+          "fotbal copii program",
+          "unde să înscriu copilul la fotbal București"
+        ],
+        "en": [
+          "kids football club Bucharest",
+          "children football academy Bucharest",
+          "youth football club Bucharest",
+          "football for kids Bucharest",
+          "best football club for children Bucharest",
+          "kids soccer club Bucharest",
+          "football academy near me Bucharest",
+          "youth football training Bucharest",
+          "football classes for kids Bucharest",
+          "junior football club Bucharest"
+        ],
+        "ua": [
+          "дитячий футбольний клуб Бухарест",
+          "футбольна школа для дітей Бухарест",
+          "футбольна академія Бухарест",
+          "футбол для дітей Бухарест",
+          "дитячий футбол Бухарест",
+          "секція футболу для дітей Бухарест",
+          "українська футбольна школа Румунія",
+          "спорт для дітей Бухарест",
+          "футбольний клуб для дітей Бухарест"
+        ],
+        "ru": [
+          "детский футбольный клуб Бухарест",
+          "футбольная школа для детей Бухарест",
+          "футбольная академия Бухарест",
+          "футбол для детей Бухарест",
+          "детский футбол Бухарест",
+          "секция футбола для детей Бухарест",
+          "спорт для детей Бухарест"
+        ]
+      },
+      "usage": {
+        "title_tag": true,
+        "meta_description": true,
+        "h1": true,
+        "hero_eyebrow": true,
+        "schema_description": true,
+        "og_description": true
+      }
+    },
+
+    {
+      "id": "C2_AGE_SPECIFIC",
+      "intent": "commercial-investigation",
+      "description": "Parent searching specifically by child age — most natural search pattern",
+      "priority": "P0",
+      "keywords": {
+        "ro": [
+          "fotbal copii 4 ani București",
+          "fotbal copii 5 ani București",
+          "fotbal copii 6 ani București",
+          "fotbal copii 7 ani București",
+          "fotbal copii 8 ani București",
+          "fotbal copii 9 ani București",
+          "fotbal copii 10 ani București",
+          "fotbal copii 11 ani București",
+          "fotbal copii 12 ani București",
+          "fotbal copii 13 ani București",
+          "fotbal copii 14 ani București",
+          "fotbal pentru copii mici",
+          "fotbal preșcolari București",
+          "fotbal juniori 12-14 ani"
+        ],
+        "en": [
+          "football for 4 year olds Bucharest",
+          "football for 5 year olds Bucharest",
+          "football for 6 year olds Bucharest",
+          "football classes ages 4-7",
+          "football training ages 8-11",
+          "youth football ages 12-14",
+          "toddler football Bucharest",
+          "football for young children Bucharest",
+          "junior football 12-14 years"
+        ],
+        "ua": [
+          "футбол для дитини 4 роки",
+          "футбол для дитини 5 років",
+          "футбол для дитини 6 років",
+          "футбол для дітей 4-7 років Бухарест",
+          "футбол для дітей 8-11 років Бухарест",
+          "футбол для підлітків Бухарест",
+          "з якого віку можна на футбол"
+        ],
+        "ru": [
+          "футбол для ребенка 4 года",
+          "футбол для ребенка 5 лет",
+          "футбол для ребенка 6 лет",
+          "футбол для детей 4-7 лет Бухарест",
+          "футбол для детей 8-11 лет Бухарест",
+          "футбол для подростков Бухарест",
+          "с какого возраста можно на футбол"
+        ]
+      },
+      "usage": {
+        "about_section_groups": true,
+        "faq_answers": true,
+        "schema_offer": true,
+        "advantages_section": true
+      }
+    },
+
+    {
+      "id": "C3_QUALITY_TRUST",
+      "intent": "commercial-investigation",
+      "description": "Parent evaluating quality, safety, coaching credentials — trust signals",
+      "priority": "P0",
+      "keywords": {
+        "ro": [
+          "antrenor fotbal copii licență UEFA",
+          "antrenor fotbal copii profesionist",
+          "antrenor fotbal juniori certificat",
+          "fotbal copii grupe mici",
+          "fotbal copii abordare individuală",
+          "fotbal copii sigur",
+          "sală fotbal copii București",
+          "fotbal copii în sală",
+          "fotbal indoor copii București",
+          "campionat AMFB copii",
+          "competiții fotbal copii București",
+          "turneu fotbal juniori București",
+          "fotbal copii cu competiții",
+          "Cupa Stelele Viitorului"
+        ],
+        "en": [
+          "UEFA licensed football coach Bucharest",
+          "professional football coaching for kids",
+          "certified youth football coach",
+          "small group football training",
+          "individual approach football kids",
+          "safe football training kids",
+          "indoor football kids Bucharest",
+          "AMFB youth championship",
+          "kids football competition Bucharest",
+          "youth football tournament Bucharest",
+          "football club with competitions for kids"
+        ],
+        "ua": [
+          "тренер з ліцензією UEFA для дітей",
+          "професійний тренер з футболу для дітей",
+          "маленькі групи футбол діти",
+          "індивідуальний підхід футбол",
+          "безпечні тренування футбол діти",
+          "критий манеж футбол Бухарест",
+          "чемпіонат AMFB",
+          "змагання з футболу для дітей",
+          "турнір дитячий футбол Бухарест"
+        ],
+        "ru": [
+          "тренер с лицензией UEFA для детей",
+          "профессиональный тренер по футболу для детей",
+          "маленькие группы футбол дети",
+          "индивидуальный подход футбол",
+          "безопасные тренировки футбол дети",
+          "крытый манеж футбол Бухарест",
+          "чемпионат AMFB",
+          "соревнования по футболу для детей",
+          "турнир детский футбол Бухарест"
+        ]
+      },
+      "usage": {
+        "advantages_section": true,
+        "coach_section": true,
+        "meta_description": true,
+        "faq_section": true,
+        "schema_credential": true
+      }
+    },
+
+    {
+      "id": "C4_TRIAL_SIGNUP",
+      "intent": "transactional",
+      "description": "Parent ready to sign up or try — highest conversion intent",
+      "priority": "P0",
+      "keywords": {
+        "ro": [
+          "prima lecție gratuită fotbal copii",
+          "prima ședință gratuită fotbal copii București",
+          "înscrie copil fotbal București",
+          "înscrie copil la fotbal",
+          "înscriere fotbal copii",
+          "probă gratuită fotbal copii",
+          "test fotbal copii București",
+          "formular înscrie fotbal copii",
+          "preț antrenament fotbal copii București",
+          "cât costă fotbal copii București",
+          "tarife fotbal copii"
+        ],
+        "en": [
+          "free trial football kids Bucharest",
+          "free football session kids",
+          "sign up kids football Bucharest",
+          "enroll child football Bucharest",
+          "football trial class for kids",
+          "how much does kids football cost Bucharest",
+          "football club for kids price",
+          "register child football academy"
+        ],
+        "ua": [
+          "перше тренування безкоштовно футбол",
+          "записати дитину на футбол Бухарест",
+          "безкоштовне пробне тренування футбол",
+          "запис на футбол для дітей",
+          "скільки коштує футбол для дітей Бухарест",
+          "ціна тренування футбол діти"
+        ],
+        "ru": [
+          "первая тренировка бесплатно футбол",
+          "записать ребенка на футбол Бухарест",
+          "бесплатная пробная тренировка футбол",
+          "запись на футбол для детей",
+          "сколько стоит футбол для детей Бухарест",
+          "цена тренировки футбол дети"
+        ]
+      },
+      "usage": {
+        "cta_buttons": true,
+        "hero_cta": true,
+        "contact_section": true,
+        "schema_offer": true,
+        "faq_section": true
+      }
+    },
+
+    {
+      "id": "C5_BENEFITS",
+      "intent": "informational",
+      "description": "Parent researching benefits of football for children — top of funnel",
+      "priority": "P1",
+      "keywords": {
+        "ro": [
+          "beneficii fotbal copii",
+          "de ce să înscriu copilul la fotbal",
+          "fotbal dezvoltare copii",
+          "sport pentru dezvoltarea copiilor",
+          "fotbal disciplină copii",
+          "fotbal lucru în echipă copii",
+          "fotbal caracter copii",
+          "ce învață copilul la fotbal",
+          "fotbal sănătate copii",
+          "sport copii 4 ani",
+          "activități sportive copii București",
+          "sport afterschool copii București",
+          "activități extracurriculare copii București"
+        ],
+        "en": [
+          "benefits of football for kids",
+          "why enroll child in football",
+          "football child development",
+          "sports for kids development",
+          "football teaches discipline kids",
+          "football teamwork kids",
+          "football character building children",
+          "what do children learn from football",
+          "sports activities for kids Bucharest",
+          "after school activities kids Bucharest",
+          "extracurricular activities children Bucharest"
+        ],
+        "ua": [
+          "користь футболу для дітей",
+          "чому варто записати дитину на футбол",
+          "футбол розвиток дитини",
+          "спорт для розвитку дітей",
+          "футбол дисципліна для дітей",
+          "що дає футбол дитині",
+          "спортивні секції для дітей Бухарест",
+          "гуртки для дітей Бухарест"
+        ],
+        "ru": [
+          "польза футбола для детей",
+          "зачем записать ребенка на футбол",
+          "футбол развитие ребенка",
+          "спорт для развития детей",
+          "футбол дисциплина для детей",
+          "что дает футбол ребенку",
+          "спортивные секции для детей Бухарест",
+          "кружки для детей Бухарест"
+        ]
+      },
+      "usage": {
+        "about_section": true,
+        "advantages_section": true,
+        "faq_section": true,
+        "future_blog": true
+      }
+    },
+
+    {
+      "id": "C6_DIASPORA_COMMUNITY",
+      "intent": "navigational + commercial",
+      "description": "Ukrainian/Russian diaspora parents looking for Ukrainian-speaking community through football",
+      "priority": "P1",
+      "keywords": {
+        "ro": [
+          "club fotbal copii ucraineni București",
+          "sport copii ucraineni România",
+          "comunitate ucraineană București sport",
+          "fotbal copii comunitate ucraineană",
+          "club sport copii refugiați ucraineni"
+        ],
+        "en": [
+          "Ukrainian football club Bucharest",
+          "Ukrainian kids sports Bucharest",
+          "Ukrainian community sports Romania",
+          "expat kids football Bucharest",
+          "international kids football Bucharest",
+          "football club with Ukrainian coach Bucharest",
+          "Ukrainian refugee kids sports Bucharest",
+          "international children sports club Bucharest"
+        ],
+        "ua": [
+          "українська громада Бухарест спорт",
+          "український футбольний клуб Бухарест",
+          "українські діти в Бухаресті спорт",
+          "спорт для українських дітей за кордоном",
+          "дитячий спорт українці Румунія",
+          "футбол українською Бухарест",
+          "українська школа футболу за кордоном",
+          "українці в Бухаресті діти",
+          "українці в Бухаресті спорт для дітей",
+          "українці в Румунії дитячий футбол",
+          "українці Бухарест секція для дітей",
+          "діти українців в Бухаресті куди віддати",
+          "секція для дітей українців Бухарест",
+          "гурток для українських дітей Бухарест",
+          "чим зайняти дитину в Бухаресті українцям",
+          "дитячі заняття для українців Бухарест",
+          "адаптація дітей українців Бухарест спорт",
+          "український тренер Бухарест",
+          "футбол для дітей біженців Бухарест",
+          "спорт для дітей емігрантів Бухарест",
+          "де знайти спорт для дитини українцю в Бухаресті"
+        ],
+        "ru": [
+          "украинский футбольный клуб Бухарест",
+          "спорт для русскоязычных детей Бухарест",
+          "русскоязычный тренер футбол Бухарест",
+          "детский спорт для эмигрантов Бухарест",
+          "украинцы в Бухаресте спорт для детей",
+          "украинцы в Бухаресте детский футбол",
+          "куда отдать ребенка украинцам в Бухаресте",
+          "секция для детей украинцев Бухарест",
+          "адаптация детей украинцев спорт Бухарест",
+          "украинский тренер Бухарест футбол",
+          "спорт для детей беженцев Бухарест"
+        ]
+      },
+      "usage": {
+        "meta_description_ua_ru": true,
+        "about_section": true,
+        "schema_languages": true,
+        "hero_eyebrow": true,
+        "faq_section": true
+      }
+    },
+
+    {
+      "id": "C7_UKRAINIANS_BUCHAREST_LIFE",
+      "intent": "informational + navigational",
+      "description": "Broader diaspora queries — parents searching in context of life in Bucharest as Ukrainian expats",
+      "priority": "P1",
+      "keywords": {
+        "ua": [
+          "життя українців в Бухаресті",
+          "українці в Бухаресті",
+          "українці в Румунії з дітьми",
+          "Бухарест для дітей",
+          "що робити з дітьми в Бухаресті",
+          "активності для дітей Бухарест",
+          "спортивні клуби Бухарест для дітей",
+          "як влаштувати дитину в Бухаресті",
+          "дитячі секції Бухарест українською",
+          "українська спільнота Бухарест",
+          "Румунія для дітей з України",
+          "куди віддати дитину українцю в Бухаресті",
+          "дитячі активності Бухарест українською мовою"
+        ],
+        "ru": [
+          "жизнь украинцев в Бухаресте",
+          "украинцы в Бухаресте",
+          "украинцы в Румынии с детьми",
+          "Бухарест для детей",
+          "что делать с детьми в Бухаресте",
+          "спортивные клубы Бухарест для детей",
+          "детские секции Бухарест на русском",
+          "куда отдать ребенка в Бухаресте"
+        ],
+        "en": [
+          "Ukrainian expats Bucharest kids activities",
+          "things to do with kids Bucharest",
+          "kids sports clubs Bucharest",
+          "expat children activities Bucharest",
+          "Bucharest for families with children"
+        ]
+      },
+      "usage": {
+        "future_blog": true,
+        "faq_section": true,
+        "social_media_content": true
+      }
+    }
+  ],
+
+  "brand_keywords": {
+    "_note": "All known variations people might search — ensure we rank for misspellings and abbreviations too",
+    "primary": [
+      "SC Viking",
+      "SC Viking Bucharest",
+      "SC Viking Academy",
+      "SC Viking fotbal",
+      "SC Viking футбол",
+      "SC Viking București"
+    ],
+    "variations": [
+      "scvb2021",
+      "SCVB 2021",
+      "Viking SC",
+      "Viking 2021",
+      "SC Viking 2021",
+      "Viking fotbal copii",
+      "Viking football Bucharest",
+      "Viking футбольний клуб",
+      "Viking футбольный клуб",
+      "fc viking bucharest",
+      "fc viking bucuresti",
+      "fcvb 2021",
+      "fcvb.2021",
+      "scvikingur",
+      "sc vikingur",
+      "Viking fotbal București",
+      "Viking academy Bucharest"
+    ],
+    "social_handles": [
+      "@fcvb.2021",
+      "sc.viking",
+      "@fcvb2021",
+      "scvikingur"
+    ],
+    "competition": [
+      "AMFB",
+      "Asociatia de Mini-Fotbal din Bucuresti",
+      "Stelele Viitorului Cup",
+      "Stelele Viitorului București",
+      "Cupa Stelele Viitorului"
+    ],
+    "coach": [
+      "Rostyslav",
+      "Ростислав",
+      "Rostislav",
+      "antrenor Rostyslav",
+      "coach Rostyslav UEFA C",
+      "тренер Ростислав Бухарест",
+      "antrenor Rostislav fotbal copii"
+    ]
+  },
+
+  "long_tail_questions": {
+    "_note": "Natural language queries parents type — map to FAQ and future content",
+    "ro": [
+      "la ce vârstă pot începe copiii fotbalul?",
+      "cât costă antrenamentele de fotbal pentru copii în București?",
+      "ce echipament are nevoie copilul pentru fotbal?",
+      "câte antrenamente pe săptămână la fotbal copii?",
+      "este fotbalul sigur pentru copii mici?",
+      "cum aleg cel mai bun club de fotbal pentru copilul meu?",
+      "de ce ar trebui copilul meu să facă sport de echipă?",
+      "ce face un antrenor cu licență UEFA diferit?",
+      "care sunt competițiile de fotbal pentru copii în București?",
+      "poate copilul meu să joace fotbal dacă nu a mai jucat niciodată?",
+      "antrenament fotbal copii indoor sau outdoor?",
+      "cum pot să-mi înscriu copilul la un club de fotbal?"
+    ],
+    "en": [
+      "what age can children start football?",
+      "how much does kids football cost in Bucharest?",
+      "what equipment does my child need for football?",
+      "how many training sessions per week?",
+      "is football safe for young children?",
+      "how to choose the best football club for my child?",
+      "why should my child play team sports?",
+      "what makes a UEFA licensed coach different?",
+      "what competitions are available for kids football in Bucharest?",
+      "can my child play football with no experience?",
+      "indoor vs outdoor football training for kids?",
+      "how to sign up for kids football in Bucharest?"
+    ],
+    "ua": [
+      "з якого віку можна записати дитину на футбол?",
+      "скільки коштують тренування з футболу для дітей в Бухаресті?",
+      "яке спорядження потрібно дитині для футболу?",
+      "скільки тренувань на тиждень?",
+      "чи безпечний футбол для маленьких дітей?",
+      "як обрати найкращий футбольний клуб для дитини?",
+      "чому дитині варто займатися командним спортом?",
+      "чим відрізняється тренер з ліцензією UEFA?",
+      "які змагання є для дітей з футболу в Бухаресті?",
+      "чи може дитина грати у футбол без досвіду?",
+      "футбол в залі чи на вулиці для дітей?"
+    ],
+    "ru": [
+      "с какого возраста можно записать ребенка на футбол?",
+      "сколько стоят тренировки по футболу для детей в Бухаресте?",
+      "какое снаряжение нужно ребенку для футбола?",
+      "сколько тренировок в неделю?",
+      "безопасен ли футбол для маленьких детей?",
+      "как выбрать лучший футбольный клуб для ребенка?",
+      "почему ребенку стоит заниматься командным спортом?",
+      "чем отличается тренер с лицензией UEFA?",
+      "какие соревнования есть для детей по футболу в Бухаресте?",
+      "может ли ребенок играть в футбол без опыта?"
+    ]
+  },
+
+  "semantic_entities": {
+    "_note": "Concepts Google needs to connect — build entity relationships in content and schema",
+    "core_entity": "SC Viking = children's football academy in Bucharest",
+    "relationships": [
+      { "entity": "SC Viking", "relation": "memberOf", "target": "AMFB (Asociatia de Mini-Fotbal din Bucuresti)" },
+      { "entity": "SC Viking", "relation": "participatesIn", "target": "Stelele Viitorului Cup" },
+      { "entity": "SC Viking", "relation": "locatedIn", "target": "Bucharest, Romania" },
+      { "entity": "SC Viking", "relation": "headCoach", "target": "Rostyslav (UEFA C)" },
+      { "entity": "SC Viking", "relation": "offers", "target": "Football training ages 4-14" },
+      { "entity": "SC Viking", "relation": "offers", "target": "Free trial session" },
+      { "entity": "SC Viking", "relation": "hasAgeGroup", "target": "Beginners 4-7" },
+      { "entity": "SC Viking", "relation": "hasAgeGroup", "target": "Intermediate 8-11" },
+      { "entity": "SC Viking", "relation": "hasAgeGroup", "target": "Advanced 12-14" },
+      { "entity": "SC Viking", "relation": "speaksLanguage", "target": "Ukrainian, English, Romanian, Russian" },
+      { "entity": "SC Viking", "relation": "trainingVenue", "target": "Indoor arena / dome" },
+      { "entity": "SC Viking", "relation": "trainingFrequency", "target": "3x/week + weekly friendlies + bi-weekly championships" }
+    ]
+  },
+
+  "content_gaps": {
+    "_note": "Keywords that exist in search but are NOT currently addressed on the site",
+    "missing_in_faq": [
+      { "topic": "equipment_needed", "queries": ["ce echipament", "what equipment", "яке спорядження", "какое снаряжение"] },
+      { "topic": "pricing", "queries": ["cât costă", "how much", "скільки коштує", "сколько стоит"] },
+      { "topic": "schedule_details", "queries": ["program antrenamente", "training schedule", "розклад тренувань", "расписание тренировок"] },
+      { "topic": "age_start", "queries": ["la ce vârstă", "what age", "з якого віку", "с какого возраста"] },
+      { "topic": "no_experience", "queries": ["fără experiență", "no experience", "без досвіду", "без опыта"] },
+      { "topic": "indoor_vs_outdoor", "queries": ["indoor outdoor", "в залі чи на вулиці", "зал или улица"] },
+      { "topic": "transport_parking", "queries": ["parcare", "parking", "cum ajung", "how to get there"] }
+    ],
+    "missing_pages": [
+      { "type": "gallery_meta", "note": "Gallery page has no dedicated title/description optimized for 'poze fotbal copii SC Viking'" },
+      { "type": "privacy_ro_ru", "note": "Privacy page missing for Romanian and Russian locales" }
+    ]
+  },
+
+  "keyword_placement_rules": {
+    "_note": "Where each keyword type should appear — based on CompuX anti-cannibalization principles",
+    "title_tag": {
+      "formula": "[Primary keyword] + [Location] | [Brand]",
+      "max_length": 60,
+      "examples": {
+        "ro": "Club Fotbal Copii București — Academie 4-14 Ani | SC Viking",
+        "en": "Kids Football Club Bucharest — Academy Ages 4-14 | SC Viking",
+        "ua": "Дитячий футбольний клуб Бухарест — Академія 4-14 років | SC Viking",
+        "ru": "Детский футбольный клуб Бухарест — Академия 4-14 лет | SC Viking"
+      }
+    },
+    "meta_description": {
+      "formula": "[Unique value] + [Trust signal] + [CTA]",
+      "max_length": 160,
+      "examples": {
+        "ro": "Grupe mici de 8-12 copii. Antrenor cu licență UEFA C. Campionate oficiale AMFB. Prima ședință de probă gratuită. Înscrieri deschise.",
+        "en": "Small groups of 8-12 kids. UEFA C licensed coach. Official AMFB championships. Free trial session. Now enrolling ages 4-14.",
+        "ua": "Групи 8-12 дітей. Тренер з ліцензією UEFA C. Офіційні чемпіонати AMFB. Перше тренування безкоштовно. Набір 4-14 років.",
+        "ru": "Группы 8-12 детей. Тренер с лицензией UEFA C. Официальные чемпионаты AMFB. Первая тренировка бесплатно. Набор 4-14 лет."
+      }
+    },
+    "h1": {
+      "rule": "One per page, contains primary keyword naturally",
+      "current": "SC Viking",
+      "note": "H1 is brand-only. Consider if eyebrow+title combination covers the keyword"
+    },
+    "image_alt": {
+      "formula": "[What is shown] + [Context keyword]",
+      "examples": [
+        "antrenament fotbal copii SC Viking București",
+        "meci campionat AMFB juniori SC Viking",
+        "antrenor Rostyslav cu echipa SC Viking",
+        "sală fotbal indoor antrenament copii"
+      ]
+    },
+    "citable_passage": {
+      "length": "134-167 words",
+      "placement": "about section, one per language",
+      "purpose": "AI search engines (Google AI Overview, Perplexity, ChatGPT) can extract and cite this block"
+    }
+  },
+
+  "competitor_keywords": {
+    "_note": "Keywords competitors rank for — potential targets",
+    "competitors_bucharest": [
+      "Viitorul București fotbal copii",
+      "Rapid București copii",
+      "Dinamo București academie juniori",
+      "CSA Steaua fotbal copii",
+      "Pro Sport fotbal copii",
+      "fotbal copii Pipera",
+      "fotbal copii Militari",
+      "fotbal copii Titan",
+      "fotbal copii Berceni"
+    ],
+    "differentiation": {
+      "unique_to_viking": [
+        "Ukrainian/Russian-speaking coach",
+        "Ukrainian diaspora community",
+        "small groups 8-12 max",
+        "free trial first session",
+        "indoor training facility",
+        "AMFB + Stelele Viitorului competitions"
+      ]
+    }
+  },
+
+  "stats": {
+    "total_keywords": 304,
+    "brand_variations": 17,
+    "long_tail_questions": 45,
+    "by_language": { "ro": 78, "en": 67, "ua": 81, "ru": 58 },
+    "by_intent": {
+      "commercial_investigation": 105,
+      "transactional": 36,
+      "informational": 58,
+      "navigational_community": 65,
+      "diaspora_life": 40
+    },
+    "by_priority": { "P0": 143, "P1": 121 },
+    "clusters": 7
+  }
+}

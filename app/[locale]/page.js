@@ -24,7 +24,7 @@ export default function HomePage() {
           <div className="hero-bg-photo" aria-hidden="true">
             <picture>
               <source srcSet="/images/hero-bg.webp" type="image/webp" />
-              <img src="/images/hero-bg.jpg" alt="SC Viking children's football training" fetchPriority="high" decoding="async" />
+              <img src="/images/hero-bg.jpg" alt="SC Viking kids football training session in Bucharest indoor arena" fetchPriority="high" decoding="async" />
             </picture>
           </div>
           <div className="hero-backdrop" aria-hidden="true" />
@@ -46,7 +46,7 @@ export default function HomePage() {
             <div className="about-photo-col">
               <picture>
                 <source srcSet="/images/about-team.webp" type="image/webp" />
-                <img src="/images/about-team.jpg" alt="SC Viking team" loading="lazy" decoding="async" />
+                <img src="/images/about-team.jpg" alt="SC Viking youth football team photo in Bucharest" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div className="about-text-col">

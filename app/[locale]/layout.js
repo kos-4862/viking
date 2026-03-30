@@ -7,32 +7,32 @@ const SITE_URL = "https://scviking2021.com";
 
 const metaByLocale = {
   ua: {
-    title: "SC Viking — Дитячий футбольний клуб у Бухаресті",
+    title: "SC Viking — Дитячий футбольний клуб у Бухаресті | 4–14 років",
     description:
-      "SC Viking — дитяча футбольна академія у Бухаресті, 4–14 років. Тренер з ліцензією UEFA C, змагання AMFB, групи до 12 дітей. Перше тренування безплатно.",
+      "Дитяча футбольна академія у Бухаресті. Групи 8–12 дітей, тренер з ліцензією UEFA C. Офіційні чемпіонати AMFB та Кубок Stelele Viitorului. Перше тренування безплатно.",
     ogDescription:
-      "Футбольні тренування для дітей 4–14 років. Ліцензований тренер UEFA C, офіційні чемпіонати AMFB. Перше заняття безплатно.",
+      "Дитячий футбол у Бухаресті для дітей 4–14 років. Тренер з ліцензією UEFA C, чемпіонати AMFB. Перше заняття безплатно.",
   },
   en: {
-    title: "SC Viking — Children's Football Club in Bucharest",
+    title: "SC Viking — Kids Football Club in Bucharest | Ages 4–14",
     description:
-      "SC Viking — children's football academy in Bucharest for ages 4–14. UEFA C licensed coach, AMFB competitions, groups up to 12 kids. Free trial session.",
+      "Children's football academy in Bucharest. Small groups of 8–12 kids, UEFA C licensed coach. Official AMFB championships and Stelele Viitorului Cup. Free trial session.",
     ogDescription:
-      "Football training for children 4–14. UEFA C licensed coach, official AMFB championships. First session free.",
+      "Kids football training in Bucharest for ages 4–14. UEFA C licensed coach, official AMFB championships. First session free.",
   },
   ro: {
-    title: "SC Viking — Club de fotbal pentru copii în București",
+    title: "SC Viking — Club de fotbal pentru copii în București | 4–14 ani",
     description:
-      "SC Viking — academie de fotbal pentru copii în București, 4–14 ani. Antrenor cu licență UEFA C, competiții AMFB, grupe de max 12 copii. Prima ședință gratuită.",
+      "Academie de fotbal pentru copii în București. Grupe mici de 8–12 copii, antrenor cu licență UEFA C. Campionate oficiale AMFB și Cupa Stelele Viitorului. Prima ședință gratuită.",
     ogDescription:
-      "Antrenamente de fotbal pentru copii 4–14 ani. Antrenor cu licență UEFA C, campionate oficiale AMFB. Prima ședință gratuită.",
+      "Antrenamente de fotbal pentru copii 4–14 ani în București. Antrenor cu licență UEFA C, campionate AMFB. Prima ședință gratuită.",
   },
   ru: {
-    title: "SC Viking — Детский футбольный клуб в Бухаресте",
+    title: "SC Viking — Детский футбольный клуб в Бухаресте | 4–14 лет",
     description:
-      "SC Viking — детская футбольная академия в Бухаресте, 4–14 лет. Тренер с лицензией UEFA C, соревнования AMFB, группы до 12 детей. Первая тренировка бесплатно.",
+      "Детская футбольная академия в Бухаресте. Группы 8–12 детей, тренер с лицензией UEFA C. Официальные чемпионаты AMFB и Кубок Stelele Viitorului. Первая тренировка бесплатно.",
     ogDescription:
-      "Футбольные тренировки для детей 4–14 лет. Лицензированный тренер UEFA C, официальные чемпионаты AMFB. Первое занятие бесплатно.",
+      "Детский футбол в Бухаресте для детей 4–14 лет. Тренер с лицензией UEFA C, чемпионаты AMFB. Первое занятие бесплатно.",
   },
 };
 
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }) {
       description: meta.ogDescription,
       url: `${SITE_URL}/${locale}`,
       siteName: "SC Viking",
-      images: [{ url: "/images/about-team.jpg", width: 1200, height: 630, alt: "SC Viking" }],
+      images: [{ url: "/images/about-team.jpg", width: 1200, height: 630, alt: "SC Viking — kids football club Bucharest, team photo" }],
       locale: localeToOgLocale[locale] || "uk_UA",
       type: "website",
     },
