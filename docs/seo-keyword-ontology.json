@@ -446,7 +446,7 @@
     "primary": [
       "SC Viking",
       "SC Viking Bucharest",
-      "SC Viking Academy",
+      "SC Viking fotbal club",
       "SC Viking fotbal",
       "SC Viking футбол",
       "SC Viking București"
@@ -468,7 +468,7 @@
       "scvikingur",
       "sc vikingur",
       "Viking fotbal București",
-      "Viking academy Bucharest"
+      "Viking football club Bucharest"
     ],
     "social_handles": [
       "@fcvb.2021",
@@ -553,7 +553,7 @@
 
   "semantic_entities": {
     "_note": "Concepts Google needs to connect — build entity relationships in content and schema",
-    "core_entity": "SC Viking = children's football academy in Bucharest",
+    "core_entity": "SC Viking = children's football club in Bucharest",
     "relationships": [
       { "entity": "SC Viking", "relation": "memberOf", "target": "AMFB (Asociatia de Mini-Fotbal din Bucuresti)" },
       { "entity": "SC Viking", "relation": "participatesIn", "target": "Stelele Viitorului Cup" },
@@ -594,7 +594,7 @@
       "max_length": 60,
       "examples": {
         "ro": "Club Fotbal Copii București — Academie 4-14 Ani | SC Viking",
-        "en": "Kids Football Club Bucharest — Academy Ages 4-14 | SC Viking",
+        "en": "Kids Football Club Bucharest — Ages 4-14 | SC Viking",
         "ua": "Дитячий футбольний клуб Бухарест — Академія 4-14 років | SC Viking",
         "ru": "Детский футбольный клуб Бухарест — Академия 4-14 лет | SC Viking"
       }

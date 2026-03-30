@@ -9,30 +9,30 @@ const metaByLocale = {
   ua: {
     title: "SC Viking — Дитячий футбольний клуб у Бухаресті | 4–14 років",
     description:
-      "Дитяча футбольна академія у Бухаресті. Групи 8–12 дітей, тренер з ліцензією UEFA C. Офіційні чемпіонати AMFB та Кубок Stelele Viitorului. Перше тренування безплатно.",
+      "Школа футболу для дітей у Бухаресті. Групи 8–12 дітей, тренер з ліцензією UEFA C. Офіційні чемпіонати AMFB та Кубок Stelele Viitorului. Перше тренування безкоштовно.",
     ogDescription:
-      "Дитячий футбол у Бухаресті для дітей 4–14 років. Тренер з ліцензією UEFA C, чемпіонати AMFB. Перше заняття безплатно.",
+      "Футбол для дітей у Бухаресті, 4–14 років. Тренер з ліцензією UEFA C, чемпіонати AMFB. Перше заняття безкоштовно.",
   },
   en: {
     title: "SC Viking — Kids Football Club in Bucharest | Ages 4–14",
     description:
-      "Children's football academy in Bucharest. Small groups of 8–12 kids, UEFA C licensed coach. Official AMFB championships and Stelele Viitorului Cup. Free trial session.",
+      "Children's football club in Bucharest. Small groups of 8–12 kids, UEFA C licensed coach. Official AMFB championships and Stelele Viitorului Cup. Free trial session.",
     ogDescription:
       "Kids football training in Bucharest for ages 4–14. UEFA C licensed coach, official AMFB championships. First session free.",
   },
   ro: {
     title: "SC Viking — Club de fotbal pentru copii în București | 4–14 ani",
     description:
-      "Academie de fotbal pentru copii în București. Grupe mici de 8–12 copii, antrenor cu licență UEFA C. Campionate oficiale AMFB și Cupa Stelele Viitorului. Prima ședință gratuită.",
+      "Club de fotbal pentru copii în București. Grupe mici de 8–12 copii, antrenor cu licență UEFA C. Campionate oficiale AMFB și Cupa Stelele Viitorului. Prima ședință gratuită.",
     ogDescription:
       "Antrenamente de fotbal pentru copii 4–14 ani în București. Antrenor cu licență UEFA C, campionate AMFB. Prima ședință gratuită.",
   },
   ru: {
     title: "SC Viking — Детский футбольный клуб в Бухаресте | 4–14 лет",
     description:
-      "Детская футбольная академия в Бухаресте. Группы 8–12 детей, тренер с лицензией UEFA C. Официальные чемпионаты AMFB и Кубок Stelele Viitorului. Первая тренировка бесплатно.",
+      "Школа футбола для детей в Бухаресте. Группы 8–12 детей, тренер с лицензией UEFA C. Официальные чемпионаты AMFB и Кубок Stelele Viitorului. Первая тренировка бесплатно.",
     ogDescription:
-      "Детский футбол в Бухаресте для детей 4–14 лет. Тренер с лицензией UEFA C, чемпионаты AMFB. Первое занятие бесплатно.",
+      "Футбол для детей в Бухаресте, 4–14 лет. Тренер с лицензией UEFA C, чемпионаты AMFB. Первое занятие бесплатно.",
   },
 };
 
