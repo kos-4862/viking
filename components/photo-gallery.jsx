@@ -3,7 +3,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocale } from "@/components/locale-provider";
 import { getSiteCopy } from "@/lib/site-copy";
 
-const BATCH_SIZE = 14;
+const DESKTOP_BATCH = 6;
+const MOBILE_BATCH = 14;
+const DESKTOP_MIN = 768;
 
 const mainPhotos = [
   { src: "/images/gallery/main-01.webp", fallback: "/images/gallery/main-01.jpg", alt: "Player kicking the ball" },
@@ -28,12 +30,36 @@ const allPhotos = Array.from({ length: 42 }, (_, i) => {
 
 export { mainPhotos, allPhotos };
 
+function useBatchSize() {
+  const [batch, setBatch] = useState(DESKTOP_BATCH);
+  useEffect(() => {
+    const update = () =>
+      setBatch(window.innerWidth >= DESKTOP_MIN ? DESKTOP_BATCH : MOBILE_BATCH);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return batch;
+}
+
 export function PhotoGallery({ photos = mainPhotos, paginated = false }) {
-  const [visibleCount, setVisibleCount] = useState(paginated ? BATCH_SIZE : photos.length);
+  const batchSize = useBatchSize();
+  const [visibleCount, setVisibleCount] = useState(paginated ? DESKTOP_BATCH : photos.length);
   const [active, setActive] = useState(null);
   const dialogRef = useRef(null);
   const { locale } = useLocale();
   const copy = getSiteCopy(locale);
+
+  // Sync visible count when batch size changes (desktop <-> mobile)
+  useEffect(() => {
+    if (paginated) {
+      setVisibleCount((prev) => {
+        // On resize, ensure at least one batch is shown
+        if (prev < batchSize) return batchSize;
+        return prev;
+      });
+    }
+  }, [batchSize, paginated]);
 
   const visiblePhotos = photos.slice(0, visibleCount);
   const hasMore = visibleCount < photos.length;
@@ -91,7 +117,7 @@ export function PhotoGallery({ photos = mainPhotos, paginated = false }) {
   }, [active, showPrev, showNext]);
 
   function loadMore() {
-    setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, photos.length));
+    setVisibleCount((prev) => Math.min(prev + batchSize, photos.length));
   }
 
   const touchRef = useRef(null);
