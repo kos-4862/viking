@@ -1969,7 +1969,7 @@ input {
 
 .contact-messengers__buttons {
   display: flex;
-  gap: 10px;
+  gap: 6px;
   justify-content: center;
   max-width: 420px;
   margin: 0 auto;
