@@ -2258,8 +2258,8 @@ input {
 }
 
 .mobile-bottom-bar .mbb-tg {
-  border-color: rgba(34, 158, 217, 0.4);
-  background: rgba(34, 158, 217, 0.1);
+  border-color: transparent;
+  background: transparent;
 }
 
 /* Social icons — subtle */
