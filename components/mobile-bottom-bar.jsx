@@ -28,7 +28,7 @@ export function MobileBottomBar() {
           <img src="/icons/whatsapp.svg" alt="WhatsApp" aria-hidden="true" />
         </a>
         <a href="https://t.me/RostyslavByanov" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="mbb-tg" onClick={() => window.gtag?.("event", "contact_click", { method: "telegram" })}>
-          <img src="/icons/telegram.svg" alt="Telegram" aria-hidden="true" />
+          <img src="/icons/telegram-blue.svg" alt="Telegram" aria-hidden="true" />
         </a>
       </div>
     </div>

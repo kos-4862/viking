@@ -2375,9 +2375,10 @@ button:focus-visible {
   .primary-nav {
     position: fixed;
     top: 88px;
-    right: 14px;
-    left: 14px;
-    width: auto;
+    right: auto;
+    left: 8px;
+    width: fit-content;
+    min-width: 200px;
     padding: 18px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 28px;
@@ -2412,12 +2413,22 @@ button:focus-visible {
     margin-bottom: 12px;
   }
 
-  .mobile-nav-panel {
-    display: grid;
-    gap: 12px;
+  .mobile-nav-lang-top .language-dropdown {
+    width: 100%;
+  }
+
+  .mobile-nav-lang-top .language-dropdown__trigger {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mobile-nav-lang-top .language-dropdown__menu {
+    position: static;
+    width: 100%;
     margin-top: 8px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.06);
   }
 
   .social-strip-mobile {

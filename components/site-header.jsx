@@ -24,7 +24,7 @@ const socialItems = [
   {
     href: "https://t.me/RostyslavByanov",
     label: "Telegram",
-    icon: "/icons/telegram.svg"
+    icon: "/icons/telegram-blue.svg"
   },
   {
     href: "https://www.youtube.com/channel/UCD5ho8RpSJ8vccMVvprGpwQ",
@@ -167,19 +167,13 @@ export function SiteHeader() {
 
         <nav id="primary-nav" className={`primary-nav${open ? " is-open" : ""}`} aria-label="Primary">
           <div className="mobile-nav-lang-top">
-            <LanguageRow locale={locale} setLocale={setLocale} />
+            <LanguageDropdown copy={copy} locale={locale} setLocale={setLocale} />
           </div>
           {copy.header.navItems.map((item) => (
             <a key={item.href} href={`/${locale}/${item.href}`} onClick={closeMenu}>
               {item.label}
             </a>
           ))}
-
-          <div className="mobile-nav-panel">
-            <a className="mobile-nav-link" href={`/${locale}/#contact`} onClick={closeMenu}>
-              {copy.header.mobileCtaLabel}
-            </a>
-          </div>
         </nav>
 
         <div className="header-actions">

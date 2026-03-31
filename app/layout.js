@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Montserrat, Bebas_Neue } from "next/font/google";
+import Script from "next/script";
 import { getStructuredData } from "@/lib/structured-data";
 import { headers } from "next/headers";
 
@@ -43,20 +44,17 @@ export default async function RootLayout({ children }) {
         <meta name="theme-color" content="#da1123" />
         <link rel="preload" as="image" href="/sc-viking-emblem-transparent.webp" type="image/webp" />
         <link rel="preload" as="image" href="/images/hero-bg.webp" type="image/webp" fetchPriority="high" />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-0WMTCBF9MN"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});gtag('js',new Date());gtag('config','G-0WMTCBF9MN');`,
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
       </head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-0WMTCBF9MN"
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});gtag('js',new Date());gtag('config','G-0WMTCBF9MN');`}
+      </Script>
+      <Script id="structured-data" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(structuredData)}
+      </Script>
       <body>{children}</body>
     </html>
   );
