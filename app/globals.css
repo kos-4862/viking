@@ -1845,6 +1845,25 @@ input {
   line-height: 1.7;
 }
 
+.venue-item {
+  margin-bottom: 16px;
+}
+
+.venue-item:last-child {
+  margin-bottom: 0;
+}
+
+.venue-label {
+  color: var(--body, #515764);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.venue-item .button-map {
+  font-size: 0.85rem;
+}
+
 /* ============================================================
    PANELS (kept for shared use)
    ============================================================ */

@@ -565,7 +565,7 @@
       { "entity": "SC Viking", "relation": "hasAgeGroup", "target": "Intermediate 8-11" },
       { "entity": "SC Viking", "relation": "hasAgeGroup", "target": "Advanced 12-14" },
       { "entity": "SC Viking", "relation": "speaksLanguage", "target": "Ukrainian, English, Romanian, Russian" },
-      { "entity": "SC Viking", "relation": "trainingVenue", "target": "Indoor arena / dome" },
+      { "entity": "SC Viking", "relation": "trainingVenue", "target": "D'Angelo Sport (Șos. Olteniței Nr 11, Popești-Leordeni) & Premium Wellness Institute (Str. Dumitru Brumărescu 1–3, București, Sector 4)" },
       { "entity": "SC Viking", "relation": "trainingFrequency", "target": "3x/week + weekly friendlies + bi-weekly championships" }
     ]
   },

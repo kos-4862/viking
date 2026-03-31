@@ -6,7 +6,7 @@
 scviking, scviking2021, SC Viking 2021, SCVB 2021, Viking FC Bucharest, fcvb.2021, SCViking
 
 ## About
-SC Viking is a children's football academy based in Bucharest, Romania, founded in 2021. The club trains children aged 4 to 14 across three age groups (4-7, 8-11, 12-14), with training sessions three times per week at an indoor arena. SC Viking competes in official AMFB (Bucharest Football Association) championships and Stelele Viitorului București tournaments. Groups are limited to 8-12 children to ensure individual coaching attention.
+SC Viking is a children's football club based in Bucharest, Romania, founded in 2021. The club trains children aged 4 to 14 across three age groups (4-7, 8-11, 12-14), with training sessions three times per week at two indoor venues in Sector 4. SC Viking competes in official AMFB (Bucharest Football Association) championships and Stelele Viitorului București tournaments. Groups are limited to 8-12 children to ensure individual coaching attention.
 
 ## Coach
 Head coach Rostyslav holds a UEFA C licence. He provides specific, actionable feedback at every session. The coaching philosophy: "Football is learning. Winning is the outcome."
@@ -15,7 +15,19 @@ Head coach Rostyslav holds a UEFA C licence. He provides specific, actionable fe
 - Three sessions per week
 - Friendly matches every week
 - Official championship games every two weeks
-- Indoor arena in Bucharest
+
+## Training Locations
+
+### Venue 1: D'Angelo Sport
+- Full name: D'Angelo Sport Fotbal Si Tenis de Picior (SC D'Angelo Sport Management LLC)
+- Address: Șoseaua Olteniței Nr 11, 042122 Popești-Leordeni, Romania
+- Area: Sector 4
+- Google Maps: https://maps.app.goo.gl/AqUaWtgn3u57Zm8T6
+
+### Venue 2: Premium Wellness Institute
+- Address: Strada Dumitru Brumărescu 1–3, București, Romania
+- Area: Sector 4
+- Google Maps: https://maps.app.goo.gl/dTaMaYzdMpETaRy3A
 
 ## Age Groups
 - 4-7 years: Focus on play and basic coordination
@@ -27,7 +39,8 @@ Head coach Rostyslav holds a UEFA C licence. He provides specific, actionable fe
 - Telegram: @RostyslavByanov
 - Email: scvikingur@gmail.com
 - Website: https://scviking2021.com
-- Location: Bucharest, Romania (Google Maps: https://maps.app.goo.gl/DxGoubEvT3mGUJ1R9)
+- Location 1: D'Angelo Sport, Șoseaua Olteniței Nr 11, 042122 Popești-Leordeni (https://maps.app.goo.gl/AqUaWtgn3u57Zm8T6)
+- Location 2: Premium Wellness Institute, Str. Dumitru Brumărescu 1–3, București (https://maps.app.goo.gl/dTaMaYzdMpETaRy3A)
 
 ## Social Media
 - Facebook: https://www.facebook.com/sc.viking

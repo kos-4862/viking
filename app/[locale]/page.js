@@ -164,13 +164,18 @@ export default function HomePage() {
               <div className="location-text-col">
                 <div className="location-content">
                   <p>{copy.location.text}</p>
-                  <a className="button button-map" href={copy.location.mapUrl} target="_blank" rel="noopener noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                    {copy.location.mapLabel}
-                  </a>
+                  {copy.location.venues.map((venue, i) => (
+                    <div className="venue-item" key={i}>
+                      <p className="venue-label"><strong>{venue.name}</strong> — {venue.address}</p>
+                      <a className="button button-map" href={venue.mapUrl} target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                          <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        {copy.location.mapLabel}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
