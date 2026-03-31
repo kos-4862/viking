@@ -230,7 +230,7 @@ export default function HomePage() {
                   <span>+380999513717</span>
                 </a>
                 <a className="messenger-btn messenger-btn--wa" href="https://wa.me/380999513717" target="_blank" rel="noopener noreferrer">
-                  <img src="/icons/whatsapp.svg" alt="WhatsApp" aria-hidden="true" />
+                  <img src="/icons/whatsapp-white.svg" alt="WhatsApp" aria-hidden="true" />
                   <span>WhatsApp</span>
                 </a>
                 <a className="messenger-btn messenger-btn--tg" href="https://t.me/RostyslavByanov" target="_blank" rel="noopener noreferrer">
