@@ -1995,6 +1995,16 @@ input {
   height: 18px;
 }
 
+.messenger-btn--wa img {
+  width: 22px;
+  height: 22px;
+}
+
+.messenger-btn--tg img {
+  width: 16px;
+  height: 16px;
+}
+
 .messenger-btn--phone {
   background: #2a2a30;
   border: 1px solid #3a3a42;

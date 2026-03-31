@@ -234,7 +234,7 @@ export default function HomePage() {
                   <span>WhatsApp</span>
                 </a>
                 <a className="messenger-btn messenger-btn--tg" href="https://t.me/RostyslavByanov" target="_blank" rel="noopener noreferrer">
-                  <img src="/icons/telegram-blue.svg" alt="Telegram" aria-hidden="true" />
+                  <img src="/icons/telegram-white.svg" alt="Telegram" aria-hidden="true" />
                   <span>Telegram</span>
                 </a>
               </div>
